@@ -1,0 +1,21 @@
+# system
+安装版本：CentOS 6.7
+内核版本：Linux CoS6 2.6.32-573.22.1.el6.x86_64
+
+# docker
+镜像关系：
+ - cluster
+   - cluster1
+   - cluster2
+   - cluster3
+   - cluster4
+   - cluster5
+   - cluster6
+
+# zookeeper
+安装版本：zookeeper-3.4.8.tar.gz
+运行主机：cluster1、cluster2、cluster3、cluster4、cluster5
+
+# solr
+安装版本：solr-4.10.4.tgz
+运行主机：cluster1、cluster2、cluster3、cluster4、cluster5、cluster6
