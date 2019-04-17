@@ -1,0 +1,15 @@
+
+apply plugin:'java'
+
+// 项目配置
+version = '0.0.1'
+
+// 仓库
+repositories {
+    //mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', includes: ['*.jar'])
+}

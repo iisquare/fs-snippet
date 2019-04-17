@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Demo for Baidu ApiStore Proxy</title>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script>
+$(function () {
+	$.ajax({
+		url : './proxy.php',
+		type : 'get',
+		data : {
+			cityname : '±±¾©'
+		},
+		beforeSend : function (xhr) {
+			xhr.setRequestHeader('ApiUrl', 'http://apis.baidu.com/apistore/weatherservice/citylist');
+		},
+		success : function (result) {
+			$('body').prepend(result);
+		}
+	});
+});
+</script>
+</body>
+</html>

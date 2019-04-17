@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:580px;}
+        p{margin-left:5px; font-size:14px;}
+        .item_home{position: absolute; background-color: #EE5D5B; border: 1px solid #BC3B3A; color: white; height: 18px; padding: 2px; line-height: 18px; white-space: nowrap;-moz-user-select:none; font-size: 12px;}
+        .item_arrow{background: url('http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png') no-repeat; position: absolute; width: 11px; height: 10px; top: 22px; left: 10px; overflow: hidden;}
+        .item_active{background-color: #6BADCA; border-color: #0000ff; z-index: 500; background-position: 0px -20px;}
+        .item_active .item_arrow{border-color: #0000ff; z-index: 500; background-position: 0px -20px}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Q8xWIOvXOlzVDAAFz2fqC75n"></script>
+    <title>安居客新房楼盘坐标</title>
+</head>
+<body>
+    <div id="allmap"></div>
+    <p id="tips">图示中为小区覆盖物，鼠标移到覆盖物上，自动显示房源均价</p>
+    <p>
+        <button name="circle">添加范围</button>
+        <button name="west">仅二环外</button>
+        <button name="east">仅高速内</button>
+        <button name="black">黑名单过滤</button>
+        <button name="status">仅待售</button>
+        <button name="log">打印数据</button>
+        <button name="developers">打印开发商</button>
+        <button name="print">输出JSON</button>
+    </p>
+</body>
+</html>
+<script src="./js/jquery-1.12.0.min.js" type="text/javascript"></script>
+<script src="./js/json2.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var blackList = [{
+    	id : '246613',
+    	name : '三庆城市主人',
+    	reason : '现房，质量差'
+    }];
+    // 拾取坐标：http://api.map.baidu.com/lbsapi/getpoint/index.html
+    // 百度地图API功能
+    var point = new BMap.Point(117.140539,36.678463);
+    var map = new BMap.Map("allmap");
+    map.centerAndZoom(point, 13); // 齐鲁软件园
+    map.enableScrollWheelZoom();
+    var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+    map.addControl(top_left_control);        
+    map.addControl(top_left_navigation);  
+    map.addControl(new BMap.MapTypeControl());
+    var stCtrl = new BMap.PanoramaControl(); //构造全景控件
+    stCtrl.setOffset(new BMap.Size(15, 50));
+    map.addControl(stCtrl);//添加全景控件
+    
+    // 复杂的自定义覆盖物
+    function ComplexCustomOverlay(data){
+      this._data = data;
+    }
+    ComplexCustomOverlay.prototype = new BMap.Overlay();
+    ComplexCustomOverlay.prototype.initialize = function(map){
+      this._map = map;
+      var data = this._data;
+      var html = [];
+      html.push('<div class="item_home"><span>' + data.name + '</span>');
+      html.push('<div class="item_arrow"></div>');
+      html.push('</div>');
+      var obj = this._obj = $(html.join(''));
+      //obj.css('z-index', BMap.Overlay.getZIndex(this._point.lat));
+      obj.hover(function () {
+    	  obj.addClass('item_active');
+    	  obj.find('span').html(data.price);
+      }, function () {
+    	  obj.removeClass('item_active');
+    	  obj.find('span').html(data.name);
+      });
+      obj.bind('click', function () {
+    	  $('#tips').html(JSON.stringify(data));
+      });
+      map.getPanes().labelPane.appendChild(obj[0]);
+      return obj[0];
+    }
+    ComplexCustomOverlay.prototype.draw = function(){
+      var map = this._map;
+      var obj = this._obj;
+      var data = this._data;
+      var pixel = map.pointToOverlayPixel(new BMap.Point(data.lng, data.lat));
+      obj.css('left', pixel.x - 10 + 'px');
+      obj.css('top', pixel.y - 30 + 'px');
+    }
+    
+    var PageUtil = {
+    	data : [],
+    	init : function (data) {
+    		this.data = data;
+    		this.renderHome();
+    		this.bindEvent();
+    	},
+    	renderHome : function () {
+    		map.clearOverlays();
+    		for (var district in this.data) {
+                var data = this.data[district];
+                for (var i = 0; i < data.length; i++) {
+                    map.addOverlay(new ComplexCustomOverlay(data[i]));
+                }
+            }
+    	},
+    	bindEvent : function () {
+    		var _this = this;
+    		$('button[name="circle"]').bind('click.map', function () {
+                map.addOverlay(new BMap.Circle(point, 5000, {
+                    strokeColor : '#a3b1cc',
+                    strokeWeight : 1,
+                    strokeOpacity : 0.9,
+                    fillColor : '#4673cc',
+                    fillOpacity : 0.5,
+                    enableEditing : true
+                }));
+    		});
+    		$('button[name="west"]').bind('click.map', function () {
+    			var lng = 117.07922;
+    			for (var district in _this.data) {
+    				var arr = [];
+                    var data = _this.data[district];
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        if(parseFloat(item.lng) < lng) continue ;
+                        arr.push(_this.data[district][i]);
+                    }
+                    _this.data[district] = arr;
+                }
+    			_this.renderHome();
+            });
+    		$('button[name="east"]').bind('click.map', function () {
+                var lng = 117.218925;
+                for (var district in _this.data) {
+                	var arr = [];
+                    var data = _this.data[district];
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        if(parseFloat(item.lng) > lng) continue ;
+                        arr.push(_this.data[district][i]);
+                    }
+                    _this.data[district] = arr;
+                }
+                _this.renderHome();
+            });
+    		$('button[name="black"]').bind('click.map', function () {
+                for (var district in _this.data) {
+                    var arr = [];
+                    var data = _this.data[district];
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        var reason = null;
+                        for (var j = 0; j < blackList.length; j++) {
+                        	if(parseInt(blackList[j].id) == parseInt(item.id)) reason = blackList[j].reason;
+                        }
+                        if(reason) {
+                        	console.log('remove id:' + item.id + ', name:' + item.name + ', reason:' + reason);
+                        	continue ;
+                        }
+                        arr.push(_this.data[district][i]);
+                    }
+                    _this.data[district] = arr;
+                }
+                _this.renderHome();
+            });
+    		$('button[name="status"]').bind('click.map', function () {
+                for (var district in _this.data) {
+                    var arr = [];
+                    var data = _this.data[district];
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        if('待售' != item.status) continue ;
+                        arr.push(_this.data[district][i]);
+                    }
+                    _this.data[district] = arr;
+                }
+                _this.renderHome();
+            });
+    		$('button[name="log"]').bind('click.map', function () {
+                console.log(_this.data);
+            });
+    		$('button[name="developers"]').bind('click.map', function () {
+    			var html = [];
+    			for (var district in _this.data) {
+                    var data = _this.data[district];
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
+                        html.push('[' + item.id + ']' + item.name + ':' + item.developers);
+                    }
+                }
+    			console.log(html.join('\n'));
+            });
+    		$('button[name="print"]').bind('click.map', function () {
+                console.log(JSON.stringify(_this.data));
+            });
+    	}
+    }
+    
+    // 载入数据
+    $.ajax({
+    	url : './anjuke_loupan.json',
+    	data : {},
+    	dataType : 'json',
+    	success : function (result) {
+    		PageUtil.init(result.data);
+    	}
+    });
+</script>
