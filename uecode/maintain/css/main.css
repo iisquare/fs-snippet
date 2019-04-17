@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+html,body,form,div,ul,fieldset,li,table,tr,td,span,em,lable,span,input{ margin:0px; padding:0px;}
+body{ background:#FFFFFF; font-family:Arial, Helvetica, sans-serif; font-size:13px; text-align:center;}
+a{ text-decoration:none; color:#006699;}
+a:hover{ text-decoration:underline;}
+.main{ width:960px; text-align:center; margin:auto;}
+.wait{ width:400px; margin:50px auto 60px auto;}
+.wait .pic{ border:none;}
+.intro{ width:100%; margin-top:15px; cursor:hand;}
+.intro .title{ height:25px; text-align:left; font-weight:bold;}
+.intro .content{ text-align:right; height:25px; line-height:25px; overflow:hidden;}
+#MScroll{ float:right;}
+.copy{ color:#666666; line-height:20px; font-size:12px;}

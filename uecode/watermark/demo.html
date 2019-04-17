@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="format-detection" content="telephone=no" />
+<title>自定义水印插件示例</title>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<style>
+  #watermark-container {
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    padding: 0;
+    position: relative;
+  }
+  #watermark-result {
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    padding: 0;
+    overflow: scroll;
+  }
+</style>
+</head>
+<body class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="./">操作</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">对齐方式 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="watermark-align" data-orientation="left-top">左上</a></li>
+              <li><a href="#" class="watermark-align" data-orientation="center-top">顶对齐</a></li>
+              <li><a href="#" class="watermark-align" data-orientation="rigth-top">右上</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" class="watermark-align" data-orientation="center-center">居中</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" class="watermark-align" data-orientation="left-bottom">左下</a></li>
+              <li><a href="#" class="watermark-align" data-orientation="center-bottom">底对齐</a></li>
+              <li><a href="#" class="watermark-align" data-orientation="rigth-bottom">右下</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">字体 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="watermark-font-family" data-family="SimSun" style="font-family: SimSun">宋体</a></li>
+              <li><a href="#" class="watermark-font-family" data-family="SimHei" style="font-family: SimHei">黑体</a></li>
+              <li><a href="#" class="watermark-font-family" data-family="NSimSun" style="font-family: NSimSun">新宋体</a></li>
+              <li><a href="#" class="watermark-font-family" data-family="FangSong" style="font-family: FangSong">仿宋</a></li>
+              <li><a href="#" class="watermark-font-family" data-family="KaiTi" style="font-family: KaiTi">楷体</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" class="watermark-font-family" data-family="STHeiti" style="font-family: STHeiti">华文黑体</a></li>
+              <li><a href="#" class="watermark-font-family" data-family="STXihei" style="font-family: STXihei">华文细黑</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">字号 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="watermark-font-size" data-size="8px" style="font-size: 8px">8px</a></li>
+              <li><a href="#" class="watermark-font-size" data-size="10px" style="font-size: 10px">10px</a></li>
+              <li><a href="#" class="watermark-font-size" data-size="12px" style="font-size: 12px">12px</a></li>
+              <li><a href="#" class="watermark-font-size" data-size="14px" style="font-size: 14px">14px</a></li>
+              <li><a href="#" class="watermark-font-size" data-size="16px" style="font-size: 16px">16px</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">样式 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="watermark-font-style" data-style="normal" style="font-style: normal">标准</a></li>
+              <li><a href="#" class="watermark-font-style" data-style="italic" style="font-style: italic">斜体</a></li>
+              <li><a href="#" class="watermark-font-style" data-style="oblique" style="font-style: oblique">倾斜</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">粗细 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="watermark-font-weight" data-weight="normal" style="font-weight: normal">标准</a></li>
+              <li><a href="#" class="watermark-font-weight" data-weight="bold" style="font-weight: bold">粗体</a></li>
+              <li><a href="#" class="watermark-font-weight" data-weight="bolder" style="font-weight: bolder">更粗</a></li>
+              <li><a href="#" class="watermark-font-weight" data-weight="lighter" style="font-weight: lighter">更细</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">颜色 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="watermark-color" data-color="#000000" style="color: #000000">黑色</a></li>
+              <li><a href="#" class="watermark-color" data-color="#FF0000" style="color: #FF0000">红色</a></li>
+              <li><a href="#" class="watermark-color" data-color="#00FF00" style="color: #00FF00">绿色</a></li>
+              <li><a href="#" class="watermark-color" data-color="#0000FF" style="color: #0000FF">蓝色</a></li>
+              <li><a href="#" class="watermark-color" data-color="#FFFF00" style="color: #FFFF00">黄色</a></li>
+              <li><a href="#" class="watermark-color" data-color="#C0C0C0" style="color: #C0C0C0">灰色</a></li>
+              <li><a href="#" class="watermark-color" data-color="#FFFFFF" style="color: #FFFFFF">白色</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">透明度 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><input type="number" class="form-control watermark-opacity" min="1" max="100" value="100"></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left">
+          <input type="file" class="watermark-file" accept="image/*" style="width: 0px; height: 0px;">
+          <input class="btn btn-default watermark-logo" type="button" value="添加图标">
+          <input class="btn btn-default watermark-text" type="button" value="添加文字">
+          <input class="btn btn-default watermark-remove" type="button" value="删除所选">
+          <input class="btn btn-default watermark-result" type="button" value="打印结果">
+          <input class="btn btn-default watermark-draw" type="button" value="预览图片">
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">工作区</div>
+        <div class="panel-body" id="watermark-container">无数据</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">预览</div>
+        <div class="panel-body" id="watermark-result">无数据</div>
+      </div>
+    </div>
+  </div>
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="./js/jquery.watermark.js"></script>
+<script>
+$(function () {
+  var $watermark = $('#watermark-container').watermark('../3d/images/sky/bottom.jpg');
+
+  $('.watermark-result').on('click', function () {
+    console.log($watermark.result());
+  });
+
+  $('.watermark-draw').on('click', function () {
+    $watermark.draw(function (result) {
+      $('#watermark-result').html('<img src="' + result + '">');
+    });
+  });
+
+});
+</script>
+</body>
+</html>

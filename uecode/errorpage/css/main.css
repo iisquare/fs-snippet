@@ -1,0 +1,19 @@
+@charset "utf-8";
+/*
+ *Powered by:iisquare.com
+ */
+html,body,form,div,ul,fieldset,li,table,tr,td,span,em,lable,span,input{ margin:0px; padding:0px;}
+body{ background:#FFFFFF; font-family:Arial, Helvetica, sans-serif; font-size:13px; text-align:center;}
+a{ text-decoration:none; color:#006699;}
+a:hover{ text-decoration:underline;}
+.main{ width:960px; text-align:center; margin:auto;}
+.copy{ color:#666666; line-height:20px; font-size:12px;}
+.error { width:500px; height:140px; margin:180px auto 150px auto;}
+.error .logo { float:left; width:125px; height:140px; text-align:left;}
+.error .tips { float:right; width:375px; text-align:left;}
+.error .tips .title { padding:30px 0px 0px 0px; font-size:16px; font-weight:600;}
+.error .tips .time { color:#666; margin:15px 0px 25px 0px;}
+.error .tips .content { color:#666;}
+.error .tips .content .back { color:#666; font-size:8px; margin:0px 0px 0px 15px;}
+.GoHomeBtn{width:85px;height:26px;margin-left:10px;padding-left:18px;background:url(//static.iisquare.com/images/GoHomeBtn.gif) no-repeat;color:#fff;border:0;cursor:pointer;}
+#sec { color:#a10000;}

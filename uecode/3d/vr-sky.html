@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>vr-sky</title>
+    <style>
+        body {
+            background:#777;
+            padding:0;
+            margin:0;
+            font-weight: bold;
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="WebGL-output"></div>
+<script src="./js/three.min.js"></script>
+<script src="./js/OrbitControls.js"></script>
+
+<script>
+
+	var urls = {
+        "back": "images/sky/back.jpg",
+        "left": "images/sky/left.jpg",
+        "front": "images/sky/front.jpg",
+        "right": "images/sky/right.jpg",
+        "top": "images/sky/top.jpg",
+        "bottom": "images/sky/bottom.jpg"
+	};
+    var scene, camera, renderer;
+    var container, controls;
+
+    init();
+    animate();
+
+    // FUNCTIONS
+    function init()
+    {
+        // SCENE
+        scene = new THREE.Scene();
+        // CAMERA
+        var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+        var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+        camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+        camera.position.set(0, 1, 1);
+        camera.lookAt(scene.position);
+		camera.setViewOffset(SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH * 1.3, SCREEN_HEIGHT * 1.3);
+        scene.add(camera);
+
+        // RENDERER
+
+        renderer = new THREE.WebGLRenderer( {antialias:true} );
+        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        container = document.getElementById( 'WebGL-output' );
+        container.appendChild( renderer.domElement );
+
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+        // LIGHT
+        var light = new THREE.PointLight(0xffffff);
+        light.position.set(0,250,0);
+        scene.add(light);
+        // FLOOR
+
+        var directions  = ["right", "left", "top", "bottom", "front", "back"];
+        var skyGeometry = new THREE.BoxGeometry( 1024, 1024, 1024 );
+
+        var materialArray = [];
+        for (var i in directions)
+            materialArray.push( new THREE.MeshBasicMaterial({
+                map: THREE.ImageUtils.loadTexture( urls[directions[i]] ),
+                side: THREE.BackSide
+            }));
+        var skyMaterial = new THREE.MeshFaceMaterial( materialArray );
+        var skyBox = new THREE.Mesh( skyGeometry, skyMaterial );
+        //skyBox.scale.x=-1;也是镜像翻转，与上面的side一个效果
+        scene.add( skyBox );
+
+    }
+
+    function animate()
+    {
+        requestAnimationFrame( animate );
+        render();
+        update();
+    }
+
+    function update()
+    {
+        controls.update();
+    }
+
+    function render()
+    {
+        renderer.render( scene, camera );
+    }
+
+</script>
+</body>
+</html>
