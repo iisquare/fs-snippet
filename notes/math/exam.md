@@ -8,9 +8,7 @@
   - $$\lim _{x \rightarrow 0} \frac{\sin x}{x}=1$$
   - $$\lim _{x \rightarrow 0} \frac{\tan x}{x}=1$$
   - $$\lim _{x \rightarrow 0} \frac{\arcsin x}{x}=1$$
-  - $$\lim _{x \rightarrow \infty}\left(1+\frac{1}{x}\right)^{x}=e$$
   - $$\lim _{x \rightarrow \infty}\left(1+\frac{a}{x}\right)^{b x}=e^{a b}$$
-  - $$\lim _{x \rightarrow \infty}\left(\frac{x+k}{x-2 k}\right)^{x}=\lim _{x \rightarrow \infty} \frac{\left(1+\frac{k}{x}\right)^{x}}{\left(1-\frac{2 k}{x}\right)^{x}}=\frac{e^{k}}{e^{-2 k}}=e^{3 k}$$
 
 
 - 等阶无穷小代换
