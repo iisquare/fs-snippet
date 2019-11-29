@@ -75,13 +75,21 @@ chmod +x certbot-auto
 ./certbot-auto --server https://acme-v02.api.letsencrypt.org/directory -d "*.yourdomain.com" --manual --preferred-challenges dns-01 certonly
 ```
 执行完这一步之后，会下载一些需要的依赖，稍等片刻之后，会提示输入邮箱，随便输入都行【该邮箱用于安全提醒以及续期提醒】
+
 ![certbot-auto安装过程](https://images2018.cnblogs.com/blog/1021265/201803/1021265-20180315132910940-1161725031.png)
+
 ！！！注意，这里不要继续往下了申请通配符证书是要经过DNS认证的，按照提示，前往域名后台添加对应的DNS TXT记录。我这里使用的是阿里云域名解析，这里我们添加一下具体的DNS TXT 记录。
+
 ![aliyun添加TXT解析](https://images2018.cnblogs.com/blog/1021265/201803/1021265-20180315133252804-758436958.png)
+
 添加之后，不要心急着按回车，先执行 dig _acme-challenge.tinywan.top txt 确认解析记录是否生效，生效之后再回去按回车确认。　
+
 ![确认解析是否生效](https://images2018.cnblogs.com/blog/1021265/201803/1021265-20180315133639536-608265497.png)
+
 上面表示解析生效，按回车确认继续申请letsencrypt证书。
+
 ![继续申请letsencrypt证书](https://images2018.cnblogs.com/blog/1021265/201803/1021265-20180315133903909-1743522399.png)
+
 出现以上界面说明配置成功，配置证书存放在 /etc/letsencrypt/live/tinywan.top/ 里面了。
 
 ### nginx反向代理
