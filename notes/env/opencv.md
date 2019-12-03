@@ -40,16 +40,16 @@
 ```
 ### 2.编写第一个示例程序
 细心的读者在下载安装程序时可能会发现，开发包对应的编译器版本为vc14，与IDE的对应关系如下。
-|  编译器   | IDE  |
-|  ----  | ----  |
-|  vc8  |  Visual Studio 2005  |
-|  vc9  |  Visual Studio 2008  |
-|  vc10  |  Visual Studio 2010  |
-|  vc11  |  Visual Studio 2012  |
-|  vc12  |  Visual Studio 2013  |
-|  vc13  |  Visual Studio 2014  |
-|  vc14  |  Visual Studio 2015  |
-|  vc15  |  Visual Studio 2017  |
+| 编译器 | IDE |
+| :----- | :----- |
+| vc8 | Visual Studio 2005 |
+| vc9 | Visual Studio 2008 |
+| vc10 | Visual Studio 2010 |
+| vc11 | Visual Studio 2012 |
+| vc12 | Visual Studio 2013 |
+| vc13 | Visual Studio 2014 |
+| vc14 | Visual Studio 2015 |
+| vc15 | Visual Studio 2017 |
 另外，除编译器不同之外，根据系统平台架构，还分为x86、x64和ARM版本，读者应根据自己的系统环境进行选择，在编译安装环境会详细介绍。
 
 首先打开Visual Studio 2015（需要自行安装，此处不累述），新建VC++win32控制台项目，在主文件中输入测试代码。
