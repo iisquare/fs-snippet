@@ -19,16 +19,19 @@ def main():
     data_util = DataUtil()
     image = Image.open(args.filename)
     h, w = image.size[1], image.size[0]
-    noise = data_util.tensor(data_util.combine(image))
+    noise = data_util.tensor(data_util.combine(image), True)
     if os.path.exists(pkl):
         net = torch.load()
         target = net(noise)
     else:
         target = noise
+    noise = data_util.target(noise)
+    print(noise.shape)
+    target = data_util.target(target)
     out_image = np.zeros((h, w * 3, 3), dtype=np.uint8)
     out_image[:, :w] = image
-    out_image[:, w:w * 2] = data_util.target(noise, h, w)
-    out_image[:, w * 2:] = data_util.target(target, h, w)
+    out_image[:noise.shape[0], w:w + noise.shape[1]] = noise
+    out_image[:target.shape[0], w * 2:w * 2 + target.shape[1]] = target
     
     cv2.namedWindow('result', cv2.WINDOW_NORMAL)
     cv2.imshow("result", cv2.cvtColor(out_image, cv2.COLOR_BGR2RGB))
