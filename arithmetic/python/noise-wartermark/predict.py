@@ -10,24 +10,24 @@ def get_args():
     parser = argparse.ArgumentParser(description="Test train watermark", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--filename", type=str, required=True, help="test image file path")
     parser.add_argument("--with_combine", type=bool, default=True, help="combine image with watermark")
+    parser.add_argument("--pkl", type=str, default='./data/noise_net.pkl', help="net model path")
     args = parser.parse_args()
     return args
 
 def main():
     args = get_args()
-    pkl = './data/noise_net.pkl'
     data_util = DataUtil()
     image = Image.open(args.filename)
     h, w = image.size[1], image.size[0]
     noise = data_util.tensor(data_util.combine(image), True)
-    if os.path.exists(pkl):
-        net = torch.load()
+    if os.path.exists(args.pkl):
+        net = torch.load(args.pkl)
         target = net(noise)
     else:
         target = noise
     noise = data_util.target(noise)
-    print(noise.shape)
     target = data_util.target(target)
+
     out_image = np.zeros((h, w * 3, 3), dtype=np.uint8)
     out_image[:, :w] = image
     out_image[:noise.shape[0], w:w + noise.shape[1]] = noise

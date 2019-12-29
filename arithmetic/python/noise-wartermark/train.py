@@ -35,6 +35,7 @@ def main():
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+            print('Loss: ', loss)
         torch.save(net, './data/noise_net_epoch_' + str(epoch) + '.pkl')
     torch.save(net, './data/noise_net.pkl')
 
