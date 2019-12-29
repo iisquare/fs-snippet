@@ -19,7 +19,7 @@ def main():
     data_util = DataUtil()
     image = Image.open(args.filename)
     h, w = image.size[1], image.size[0]
-    noise = data_util.tensor(image)
+    noise = data_util.tensor(data_util.combine(image))
     if os.path.exists(pkl):
         net = torch.load()
         target = net(noise)
@@ -29,9 +29,9 @@ def main():
     out_image[:, :w] = image
     out_image[:, w:w * 2] = data_util.target(noise, h, w)
     out_image[:, w * 2:] = data_util.target(target, h, w)
-
+    
     cv2.namedWindow('result', cv2.WINDOW_NORMAL)
-    cv2.imshow("result", out_image)
+    cv2.imshow("result", cv2.cvtColor(out_image, cv2.COLOR_BGR2RGB))
     key = cv2.waitKey(-1)
     # "q": quit
     if key == 113:

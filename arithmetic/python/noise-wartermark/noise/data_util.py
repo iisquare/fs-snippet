@@ -19,13 +19,13 @@ class Dataset(TData.Dataset):
 class DataUtil:
     def __init__(self):
         self.dim_div_by = 64
-        self.max_width = (2160 // 6) * 6
-        self.max_height = (1920 // 6) * 6
+        self.max_width = 2176
+        self.max_height = 1920
         self.watermark = Image.open('./dataset/watermark.png')
         if self.watermark.mode!='RGBA':
             alpha = Image.new('L', self.watermark.size, 255)
             self.watermark.putalpha(alpha)
-        self.paste_mask = self.watermark.split()[3].point(lambda i: i * 0.06)
+        self.paste_mask = self.watermark.split()[3].point(lambda i: i * 0.1)
 
     def loader(self, batch_size):
         image_paths = list(Path("./dataset/train").glob("*.jpg"))
@@ -51,12 +51,15 @@ class DataUtil:
 
     def target(self, image, h, w):
         image = torch_to_np(image)
-        return image[:min(self.max_height, h), :min(self.max_width, w)]
+        image = image.transpose(1, 2, 0) * 255
+        image = image[:min(self.max_height, h), :min(self.max_width, w)]
+        return image
 
     def reshape(self, image):
         canvas = np.zeros((self.max_height, self.max_width, 3), dtype=np.uint8)
         canvas[:min(image.size[1], self.max_height), :min(image.size[0], self.max_width)] = image
-        return Image.fromarray(canvas)
+        canvas = Image.fromarray(canvas)
+        return canvas
 
     def combine(self, img):
         image = img.copy()

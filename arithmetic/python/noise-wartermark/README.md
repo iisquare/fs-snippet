@@ -27,3 +27,4 @@ conda env remove -n xxx
 - [deep-image-prior](https://github.com/DmitryUlyanov/deep-image-prior)
 - [noise2noise](https://github.com/yu4u/noise2noise)
 - [使用深度学习去除复杂图像水印](https://zhuanlan.zhihu.com/p/81373663)
+- [python中PIL.Image，OpenCV，Numpy图像格式相互转换](https://blog.csdn.net/JohinieLi/article/details/81012572)
