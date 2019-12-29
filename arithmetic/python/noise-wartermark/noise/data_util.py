@@ -19,8 +19,6 @@ class Dataset(TData.Dataset):
 class DataUtil:
     def __init__(self):
         self.dim_div_by = 64
-        self.max_width = 2176
-        self.max_height = 1920
         self.watermark = Image.open('./dataset/watermark.png')
         if self.watermark.mode!='RGBA':
             alpha = Image.new('L', self.watermark.size, 255)
@@ -32,8 +30,8 @@ class DataUtil:
         x, y = [], []
         for image_path in image_paths:
             image = Image.open(str(image_path))
-            y.append(self.tensor(image))
-            x.append(self.tensor(self.combine(image)))
+            y.append(self.tensor(image, False))
+            x.append(self.tensor(self.combine(image), False))
         dataset = Dataset(x, y)
         return TData.DataLoader(
             dataset=dataset,
@@ -42,24 +40,17 @@ class DataUtil:
             num_workers=0,
         )
 
-    def tensor(self, image):
-        image = self.reshape(image)
+    def tensor(self, image, n2t):
         image = crop_image(image, self.dim_div_by)
         image = pil_to_np(image)
-        image = np_to_torch(image)
+        if n2t:
+            image = np_to_torch(image)
         return image
 
-    def target(self, image, h, w):
+    def target(self, image):
         image = torch_to_np(image)
         image = image.transpose(1, 2, 0) * 255
-        image = image[:min(self.max_height, h), :min(self.max_width, w)]
         return image
-
-    def reshape(self, image):
-        canvas = np.zeros((self.max_height, self.max_width, 3), dtype=np.uint8)
-        canvas[:min(image.size[1], self.max_height), :min(image.size[0], self.max_width)] = image
-        canvas = Image.fromarray(canvas)
-        return canvas
 
     def combine(self, img):
         image = img.copy()

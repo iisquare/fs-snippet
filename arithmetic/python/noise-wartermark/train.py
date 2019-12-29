@@ -14,23 +14,22 @@ def get_args():
 
 def main():
     args = get_args()
-    pad = 'reflection' # 'zero'
 
     data_util = DataUtil()
     loader = data_util.loader(args.batch_size)
-    net = skip(32, data_util.max_width, 
+    net = skip(3, 3, 
                num_channels_down = [128] * 5,
                num_channels_up =   [128] * 5,
                num_channels_skip =    [128] * 5,  
                filter_size_up = 3, filter_size_down = 3, 
                upsample_mode='nearest', filter_skip_size=1,
-               need_sigmoid=True, need_bias=True, pad=pad, act_fun='LeakyReLU')
+               need_sigmoid=True, need_bias=True, pad='reflection', act_fun='LeakyReLU')
     loss_func = torch.nn.MSELoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr, betas=(0.9, 0.99))
 
     for epoch in range(args.nb_epochs):
         for step, (batch_x, batch_y) in enumerate(loader):
-            print('Epoch: ', epoch, '| Step: ', step, '| batch x: ', batch_x.numpy().shape, '| batch y: ', batch_y.numpy().shape)
+            print('Epoch: ', epoch, '| Step: ', step, '| batch x: ', batch_x.shape, '| batch y: ', batch_y.shape)
             prediction = net(batch_x)
             loss = loss_func(prediction, batch_y)
             optimizer.zero_grad()
