@@ -22,7 +22,7 @@ def main():
                num_channels_up =   [128] * 5,
                num_channels_skip =    [128] * 5,  
                filter_size_up = 3, filter_size_down = 3, 
-               upsample_mode='nearest', filter_skip_size=1,
+               upsample_mode='bilinear', filter_skip_size=1,
                need_sigmoid=True, need_bias=True, pad='reflection', act_fun='LeakyReLU')
     loss_func = torch.nn.MSELoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=args.lr, betas=(0.9, 0.99))

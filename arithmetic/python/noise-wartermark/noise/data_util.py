@@ -19,11 +19,12 @@ class Dataset(TData.Dataset):
 class DataUtil:
     def __init__(self):
         self.dim_div_by = 64
+        self.alpha = 0.1
         self.watermark = Image.open('./dataset/watermark.png')
         if self.watermark.mode!='RGBA':
             alpha = Image.new('L', self.watermark.size, 255)
             self.watermark.putalpha(alpha)
-        self.paste_mask = self.watermark.split()[3].point(lambda i: i * 0.1)
+        self.paste_mask = self.watermark.split()[3].point(lambda i: i * self.alpha)
 
     def loader(self, batch_size):
         image_paths = list(Path("./dataset/train").glob("*.jpg"))
@@ -43,6 +44,7 @@ class DataUtil:
     def tensor(self, image, n2t):
         image = crop_image(image, self.dim_div_by)
         image = pil_to_np(image)
+        image = np.clip(image + np.random.normal(scale=self.alpha * 3, size=image.shape), 0, 1).astype(np.float32)
         if n2t:
             image = np_to_torch(image)
         return image

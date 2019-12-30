@@ -19,12 +19,11 @@ def main():
     h, w, _ = image.shape
     image = image[:(h // 16) * 16, :(w // 16) * 16]  # for stride (maximum 16)
     h, w, _ = image.shape
-    out_image = np.zeros((h, w * 3, 3), dtype=np.uint8)
+    out_image = np.zeros((h, w * 2, 3), dtype=np.uint8)
     image = Image.fromarray(image)
-    noise_image = data_util.combine(image)
+    combine = data_util.combine(image)
     out_image[:, :w] = image
-    out_image[:, w:w * 2] = noise_image
-    out_image[:, w * 2:] = image
+    out_image[:, w:w * 2] = combine
 
     cv2.namedWindow('result', cv2.WINDOW_NORMAL)
     cv2.imshow("result", out_image)
