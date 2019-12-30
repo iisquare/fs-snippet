@@ -19,7 +19,10 @@ def main():
     data_util = DataUtil()
     image = Image.open(args.filename)
     h, w = image.size[1], image.size[0]
-    combine = data_util.combine(image)
+    if args.with_combine:
+        combine = data_util.combine(image)
+    else:
+        combine = image
     noise = data_util.tensor(combine, True)
     if os.path.exists(args.pkl):
         net = torch.load(args.pkl)
