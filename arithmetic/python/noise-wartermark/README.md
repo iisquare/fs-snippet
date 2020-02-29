@@ -1,3 +1,8 @@
+## Nvidia CUDA
+- [GPU算力](https://developer.nvidia.com/cuda-gpus)
+- [显卡驱动](https://www.geforce.com/drivers)
+- [CUDA Toolkit and Compatible Driver Versions](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+
 ## Anaconda
 - 从文件创建环境
 ```
