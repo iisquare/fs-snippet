@@ -1,4 +1,5 @@
-arithmetic/python/noise-wartermark/.vscode
+**/.vscode
 arithmetic/python/noise-wartermark/dataset
-arithmetic/python/noise-wartermark/noise/__pycache__
+**/__pycache__
 arithmetic/python/noise-wartermark/data
+**/.idea
