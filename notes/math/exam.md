@@ -11,7 +11,7 @@
 
 - 等阶无穷小代换
   - $$\sin \mathrm{x} \sim \mathrm{x}$$
-  - $$\tan \sim \mathrm{x}$$
+  - $$\tan \mathrm{x} \sim \mathrm{x}$$
   - $$\arctan \mathrm{x} \sim \mathrm{x}$$
   - $$\arcsin \mathrm{x} \sim \mathrm{x}$$
   - $$1-\cos x \sim \frac{x^{2}}{2}$$
@@ -31,7 +31,7 @@
   - $$(\mathrm{u} \pm \mathrm{v})^{\prime}=\mathrm{u}^{\prime} \pm \mathrm{v}^{\prime}$$
   - $$(u \cdot v)^{\prime}=u^{\prime} \cdot v+u \cdot v^{\prime}$$
   - $$(\mathrm{cu})^{\prime}=\mathrm{c} \cdot \mathrm{u}^{\prime}$$
-  - $$\left(\frac{u}{v}\right)^{\prime}=\frac{u ! v-u \cdot v^{\prime}}{v^{2}}(v \neq 0)$$
+  - $$\left(\frac{u}{v}\right)^{\prime}=\frac{u ^{\prime} \cdot v-u \cdot v^{\prime}}{v^{2}}(v \neq 0)$$
   - $$(\mathrm{u} \cdot \mathrm{v} \cdot \mathrm{w})^{\prime}=\mathrm{u}^{\prime} \cdot \mathrm{v} \cdot \mathrm{w}+\mathrm{u} \cdot \mathrm{v}^{\prime} \cdot \mathrm{w}+\mathrm{u} \cdot \mathrm{v} \cdot \mathrm{w}^{\prime}$$
 
 - 洛必达法则
