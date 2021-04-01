@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>拖拽绘制</title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<style>
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#canvas {
+		display: block;
+		position: relative;
+		/* @see(https://www.cursor.cc/?action=icon&file_id=129045) */
+		cursor: url('data:image/x-icon;base64,AAACAAEAICAQAA4AEQDoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAl9XoANt46wCjrK0AoeP3APSw/wBxd3gABeL/AAC50QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAARBCAAAAAAAAAAAAAAAAAAEQHeAAAAAAAAAAAAAAAAAAAeHeAAAAAAAAAAAAAAAAACHeHeAAAAAAAAAAAAAAAAACHeHeAAAAAAAAAAAAAAAAACHeHeAAAAAAAAAAAAAAAAACHeHeAAAAAAAAAAAAAAAAACHeHaAAAAAAAAAAAAAAAAACHeGaAAAAAAAAAAAAAAAAACHeHAwAAAAAAAAAAAAAAAACHcDAgAAAAAAAAAAAAAAAACAMCUgAAAAAAAAAAAAAAAAAwVVIAAAAAAAAAAAAAAAAABVVSAAAAAAAAAAAAAAAAAABVUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////////////////////////////////////////////////+D////gf///4D///+Af///gD///8Af///gD///8Af///gD///8Af///gD///8Af///gD///8Af///gH///8B////g////8f///////////////////////////w=='), auto;
+		border: solid 1px green;
+	}
+</style>
+<script>
+
+	function Util () {};
+
+	Util.radius = function (pa, pb) {
+		return Math.sqrt(Math.pow(pa.x - pb.x, 2) + Math.pow(pa.y - pb.y, 2));
+	};
+
+	function Point() {
+		switch (arguments.length) {
+			case 1: // event
+				this.x = arguments[0].offsetX;
+				this.y = arguments[0].offsetY;
+				break;
+			case 2: // x, y
+				this.x = arguments[0];
+				this.y = arguments[1];
+				break;
+			default:
+				this.x = this.y = 0;
+		}
+	}
+
+	function Painter(canvas) {
+		canvas.width = 600;
+		canvas.height = 400;
+		this.canvas = canvas;
+		this.context = canvas.getContext("2d");
+		this.lastPoint = null;
+		var _this = this;
+
+		this.canvas.onmousedown = function (ev) {
+			_this.lastPoint = new Point(ev);
+		};
+
+		this.canvas.onmousemove = function (ev) {
+			if (!_this.lastPoint) return true;
+			var radius = Util.radius(_this.lastPoint, new Point(ev)); // 半径
+			if (radius <= 0) return true;
+			_this.drawCircle(_this.lastPoint, radius);
+			return true;
+		};
+
+		this.canvas.onmouseup = function (ev) {
+			_this.lastPoint = null;
+		};
+
+		this.drawCircle = function (point, radius) {
+			_this.context.save();
+			_this.context.translate(0, 0);
+			_this.context.beginPath();
+			_this.context.globalCompositeOperation = "copy";
+			_this.context.lineWidth = 1;
+			_this.context.strokeStyle = "blue";
+			_this.context.arc(point.x, point.y, radius, -Math.PI, Math.PI);
+			_this.context.stroke();
+			_this.context.closePath();
+			_this.context.restore();
+		};
+
+	}
+
+	var painter = new Painter(document.getElementById("canvas"));
+</script>
+</body>
+</html>
