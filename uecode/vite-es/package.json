@@ -1,0 +1,23 @@
+{
+  "name": "fs-project",
+  "version": "1.0.0",
+  "description": "static for fs-project sites",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [
+    "fs-project"
+  ],
+  "repository": "https://github.com/iisquare/fs-project.git",
+  "author": "Ouyang <iisquare@163.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "rollup-obfuscator": "^3.0.1",
+    "vite": "^2.9.8"
+  },
+  "dependencies": {}
+}
