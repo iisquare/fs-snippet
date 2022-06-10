@@ -13,3 +13,9 @@ export GRADLE_HOME=/opt/gradle-6.8.2
 export PATH=$PATH:$ANT_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin
 # source /etc/bashrc
 ```
+
+### Maven
+- 依赖分析
+```
+mvn -Dverbose dependency:tree --settings settings.xml 
+```

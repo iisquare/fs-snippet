@@ -18,6 +18,20 @@ netsh  interface portproxy add v4tov4 listenport=<port> listenaddress=0.0.0.0 co
 netsh interface portproxy delete v4tov4 listenport=<port> listenaddress=0.0.0.0
 ```
 
+### WSA
+- 安装
+```
+Add-AppxPackage
+adb connect <TEST DEVICE IP ADDRESS>
+adb install app-debug .apk
+```
+
+### 常用命令
+- 清理目录
+```
+rd /s /q "path"
+```
+
 ## 参考
 - [如何在 Windows 10 中安装 WSL2 的 Linux 子系统](https://blog.walterlv.com/post/how-to-install-wsl2.html)
 - [Win10 WSL2 安装Docker](https://www.jianshu.com/p/a20c2d58eaac)
