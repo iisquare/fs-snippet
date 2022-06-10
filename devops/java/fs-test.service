@@ -1,0 +1,12 @@
+# copy to /etc/systemd/system/
+[Unit]
+Description=test for fs-java.
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/jdk1.8.0_271/bin/java -jar /path/to/fs-test.jar --spring.profiles.active=test
+PrivateTmp=True
+
+[Install]
+WantedBy=multi-user.target
