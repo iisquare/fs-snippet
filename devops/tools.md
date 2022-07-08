@@ -21,3 +21,10 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
   }
 })()
 ```
+
+
+## 在线工具
+
+### 网路调试
+
+- [网站访问速度测试](http://www.17ce.com/)

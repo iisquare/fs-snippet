@@ -45,3 +45,13 @@ yum -y install bash-completion
 source /etc/profile.d/bash_completion.sh
 ```
 - 配置防火墙
+
+
+### 临时文件
+
+```
+
+```
+
+- [Linux管理临时文件tmpfiles](https://www.jianshu.com/p/a338f0705615)
+- [tmpfiles.d 中文手册](http://www.jinbuguo.com/systemd/tmpfiles.d.html)
