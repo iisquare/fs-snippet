@@ -17,6 +17,11 @@ netsh interface portproxy show all
 netsh  interface portproxy add v4tov4 listenport=<port> listenaddress=0.0.0.0 connectport=<target-port> connectaddress=<target-ip>
 netsh interface portproxy delete v4tov4 listenport=<port> listenaddress=0.0.0.0
 ```
+- 重启
+```
+net stop LxssManager
+net start LxssManager
+```
 
 ### WSA
 - 安装

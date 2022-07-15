@@ -25,7 +25,7 @@ nvm uninstall x.x.x
 ## 基础工具
 - cnpm
 ```
-npm install -g cnpm --registry=https://registry.npm.taobao.org
+npm install -g cnpm --registry=https://registry.npmmirror.com
 ```
 - yarn
 ```
