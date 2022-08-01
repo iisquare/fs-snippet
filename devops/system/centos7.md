@@ -65,6 +65,8 @@ uname -a # 查看当前版本
 yum remove kernel-3.10.0-957.el7.x86_64 -y # 移除旧内核
 yum clean all # 清理
 ```
+- [Linux之Centos7小版本升级](https://blog.csdn.net/carefree2005/article/details/114819885)
+
 
 ### Yum管理
 
@@ -75,4 +77,15 @@ yum clean all # 全部清除
 yum makecache # 生成缓存
 ```
 
-- [Linux之Centos7小版本升级](https://blog.csdn.net/carefree2005/article/details/114819885)
+### 文件恢复
+
+```
+df /path/to/file # 查看文件目录所在分区
+debugfs # 进入文件调试工具
+open /dev/vda1 # 打开误删文件所在分区
+ls -ld /path/to/file # 查看文件inode值
+logdump -i <1452682> # 查找文件所在区块号
+quit # 退出
+dd if=/dev/vda1 of=/path/to/restore bs=<logdump-offset> count=1 skip=<logdump-block>
+```
+- [centos误删除恢复](https://blog.csdn.net/cheers_bin/article/details/112380310)
