@@ -49,9 +49,30 @@ source /etc/profile.d/bash_completion.sh
 
 ### 临时文件
 
-```
-
-```
-
 - [Linux管理临时文件tmpfiles](https://www.jianshu.com/p/a338f0705615)
 - [tmpfiles.d 中文手册](http://www.jinbuguo.com/systemd/tmpfiles.d.html)
+
+### 升级内核
+
+```
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+yum list kernel # 查看可用内核版本
+yum update -y kernel # 升级内核
+rpm -q kernel # 查看已安装的内核
+reboot # 重启
+uname -a # 查看当前版本
+yum remove kernel-3.10.0-957.el7.x86_64 -y # 移除旧内核
+yum clean all # 清理
+```
+
+### Yum管理
+
+```
+yum clean headers # 清除header
+yum clean packages # 清除下载的rpm包
+yum clean all # 全部清除
+yum makecache # 生成缓存
+```
+
+- [Linux之Centos7小版本升级](https://blog.csdn.net/carefree2005/article/details/114819885)
