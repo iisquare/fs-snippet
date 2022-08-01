@@ -71,6 +71,7 @@ systemctl start v2ray
 - 下载并执行certbot-auto客户端
 ```
 wget https://dl.eff.org/certbot-auto
+# https://github.com/certbot/certbot/blob/master/letsencrypt-auto-source/letsencrypt-auto
 chmod +x certbot-auto
 ./certbot-auto --server https://acme-v02.api.letsencrypt.org/directory -d "*.yourdomain.com" --manual --preferred-challenges dns-01 certonly
 ```
@@ -93,7 +94,7 @@ chmod +x certbot-auto
 出现以上界面说明配置成功，配置证书存放在 /etc/letsencrypt/live/tinywan.top/ 里面了。
 
 ### nginx反向代理
-- 使用tls证书
+- 使用TLS证书
 ```
 server {
     server_name yourdomain.com;
@@ -103,7 +104,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
 }
 ```
-- 反向代理v2ray（删除注释）
+- 反向代理v2ray
 ```
 map $http_upgrade $connection_upgrade {
     default upgrade;
@@ -111,11 +112,11 @@ map $http_upgrade $connection_upgrade {
 }
 
 upstream websocket {
-    server localhost:36722; // v2ray的运行端口
+    server localhost:36722; # v2ray的运行端口
 }
 
-server { // 仅列出相关配置，清自行整合
-    location /ray { // v2ray中配置的ws路径
+server { # 仅列出相关配置，清自行整合
+    location /ray { # v2ray中配置的ws路径
         proxy_pass http://websocket;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
@@ -126,24 +127,19 @@ server { // 仅列出相关配置，清自行整合
 ```
 - 重新载入nginx配置`nginx -s reload`
 
-### 自动更新证书（以阿里云的PHP脚本为例）
+### 自动更新证书
 - 下载钩子脚本并修改修改对应认证密钥
 ```
 git clone https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au
-vi certbot-letencrypt-wildcardcertificates-alydns-au/alydns.php
-define("accessKeyId","");
-define("accessSecrec", "");
+mv certbot-letencrypt-wildcardcertificates-alydns-au certbot-au
+vi certbot-au/au.sh
+XXX_KEY="xxxxxxxxxxxxx"
+XXX_TOKEN="阿里云控制台不支持查看历史TOCKEN，丢失只能重新申请"
 ```
-  - au.sh：操作阿里云 DNS hook shell（PHP 环境）。
-  - autxy.sh：操作腾讯云 DNS hook shell（PHP 环境）。
-  - python-version/au.py：操作阿里云 DNS hook shell（Python 2.7/3.6。
-  - alydns.php：修改 accessKeyId、accessSecrec 变量，[阿里云 API key 和 Secrec 官方申请文档](https://help.aliyun.com/knowledge_detail/38738.html)。
-  - txydns.php：修改 txyaccessKeyId、txyaccessSecrec 变量，[腾讯云 API 密钥官方申请文档](https://console.cloud.tencent.com/cam/capi)。
-  - python-version/alydns27.py：修改 ACCESS_KEY_ID、ACCESS_KEY_SECRET，[阿里云 API key 和 Secrec 官方申请文档](https://help.aliyun.com/knowledge_detail/38738.html)。
 - 配置自动更新
 ```
 crontab -e
-0 5 * * * /pat/to/certbot-auto renew --manual --preferred-challenges dns --manual-auth-hook /path/to/certbot-au/au.sh --renew-hook "systemctl restart  nginx"
+0 5 * * * /data/sh/certbot-auto renew --manual --preferred-challenges dns --manual-auth-hook "/data/sh/certbot-au/au.sh python aly add" --manual-cleanup-hook "/data/sh/certbot-au/au.sh python aly clean" --renew-hook "systemctl restart nginx"
 ```
 
 ### 防火墙配置
