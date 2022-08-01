@@ -70,7 +70,8 @@ systemctl start v2ray
 ### 申请letsencrypt证书
 - 下载并执行certbot-auto客户端
 ```
-wget https://dl.eff.org/certbot-auto
+wget https://raw.githubusercontent.com/certbot/certbot/master/letsencrypt-auto-source/letsencrypt-auto -O certbot-auto
+# wget https://dl.eff.org/certbot-auto
 # https://github.com/certbot/certbot/blob/master/letsencrypt-auto-source/letsencrypt-auto
 chmod +x certbot-auto
 ./certbot-auto --server https://acme-v02.api.letsencrypt.org/directory -d "*.yourdomain.com" --manual --preferred-challenges dns-01 certonly
