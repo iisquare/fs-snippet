@@ -3,7 +3,11 @@
 ### WSL
 - 重置WLS2网络
 ```
+wsl --shutdown
 netsh winsock reset
+netsh int ip reset all
+netsh winhttp reset proxy
+ipconfig /flushdns
 ```
 - 解决WSL2与Proxifier无法同时使用的问题
 ```
@@ -22,6 +26,14 @@ netsh interface portproxy delete v4tov4 listenport=<port> listenaddress=0.0.0.0
 net stop LxssManager
 net start LxssManager
 ```
+- 安装目录迁移
+```
+wsl --shutdown
+wsl -l --all -v
+wsl --export Ubuntu D:\openservices\wsl\Ubuntu.tar
+wsl --unregister Ubuntu
+wsl --import Ubuntu D:\openservices\wsl D:\openservices\wsl\Ubuntu.tar
+```
 
 ### WSA
 - 安装
@@ -34,3 +46,4 @@ adb install app-debug .apk
 ## 参考
 - [如何在 Windows 10 中安装 WSL2 的 Linux 子系统](https://blog.walterlv.com/post/how-to-install-wsl2.html)
 - [Win10 WSL2 安装Docker](https://www.jianshu.com/p/a20c2d58eaac)
+- [迁移wsl2子系统文件目录](https://juejin.cn/post/7024498662935904269)
