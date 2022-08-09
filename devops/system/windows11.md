@@ -30,9 +30,10 @@ net start LxssManager
 ```
 wsl --shutdown
 wsl -l --all -v
-wsl --export Ubuntu D:\openservices\wsl\Ubuntu.tar
+wsl --export Ubuntu E:\System\archives\Ubuntu.tar
 wsl --unregister Ubuntu
-wsl --import Ubuntu D:\openservices\wsl D:\openservices\wsl\Ubuntu.tar
+wsl --import Ubuntu E:\System\Ubuntu E:\System\archives\Ubuntu.tar
+Ubuntu config --default-user ouyang
 ```
 
 ### WSA
