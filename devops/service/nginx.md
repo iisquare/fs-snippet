@@ -91,3 +91,22 @@ server {
 }
 
 ```
+- 传递请求头给代理端
+```
+proxy_set_header Host $http_host;
+```
+- 增加响应头给客户端
+```
+add_header 'Access-Control-Allow-Origin' *;
+add_header 'Access-Control-Allow-Headers' *;
+add_header 'Access-Control-Allow-Methods' *;
+add_header 'Access-Control-Allow-Credentials' 'true';
+```
+- 修改代理返回内容
+```
+proxy_redirect default;
+proxy_redirect http://a.com http://b.com;
+
+sub_filter_once off; # 默认on仅替换一次
+sub_filter 'html_a' 'html_b'; # 可选subs_filter模块才支持正则
+```
