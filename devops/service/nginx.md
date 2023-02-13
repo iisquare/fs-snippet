@@ -63,6 +63,9 @@ location /uri/ {
   # autoindex_localtime on;
   # autoindex_exact_size off;
 
+  # 缓存机制：public 可被客户端和代理缓存 | private 代理不能缓存 | no-cache 不强制缓存需与服务端协商 | no-store 不使用任何缓存
+  # 不设置no-cache仅启用etag时，浏览器会在一定间隔内不与服务器协商而直接使用缓存
+  # add_header Cache-Control no-cache;
 }
 ```
 - 反向代理
@@ -110,3 +113,7 @@ proxy_redirect http://a.com http://b.com;
 sub_filter_once off; # 默认on仅替换一次
 sub_filter 'html_a' 'html_b'; # 可选subs_filter模块才支持正则
 ```
+
+## 参考链接
+
+- [HTTP 缓存](https://juejin.cn/post/7060876277376352293)
