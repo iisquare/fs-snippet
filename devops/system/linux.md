@@ -54,7 +54,6 @@ vim /etc/sudoers
 doge   ALL=(root)     NOPASSWD:ALL
 ```
 
-
 ## 分析调试
 
 ### tcpdump抓包，配合wireshark进行分析
@@ -67,3 +66,17 @@ docker inspect -f {{.State.Pid}} nginx # 查看容器PID
 nsenter -n -t5645 # 进入网络命名空间
 ```
 - [nsenter命令简介](https://staight.github.io/2019/09/23/nsenter%E5%91%BD%E4%BB%A4%E7%AE%80%E4%BB%8B/)
+
+### 按进程实时统计网络带宽利用率
+```
+命令用法：
+1、设置5秒钟刷新一次，通过-d来指定刷新频率：nethogs -d 5
+2、监视eth0网络带宽 :nethogs eth0
+3、同时监视eth0和eth1接口 : nethogs eth0 eth1
+交互命令：
+以下是NetHogs的一些交互命令(键盘快捷键)
+m : 修改单位
+r : 按流量排序
+s : 按发送流量排序
+q : 退出命令提示符
+```
