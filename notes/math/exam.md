@@ -96,7 +96,7 @@ $$
 | 离散，泊松分布$P(\lambda)$ | $\lambda$ | $P\{X=k\}={\frac{\lambda^{k}e^{-{\lambda}}}{k!}}$ | $\lambda$ | $\lambda$ |
 | 连续，均匀分布$U(a,b)$ | a<b | $f(x)={\frac{1}{b-a}}；(a\lt x\lt b)$ | $\textstyle{\frac{a+b}{2}}$ | $\frac{(b-a)^{2}}{12}$ |
 | 连续，正态分布$N(\mu,\sigma^{2})$ | $\mu_,\sigma$ | $f(x)={\frac{1}{{\sqrt{2\pi}}\sigma}}e^{-{\frac{(x-\mu)^{2}}{2\sigma^{2}}}}$ | $\mu$ | $\sigma^{2}$ |
-| 连续，指数分布$e(\lambda)$ | $\lambda$ | $f(x)={\left\{\begin{array}{l l}{\lambda e^{-\lambda x},\ \ x\gt 0}\\ {0}，{其他}\end{array}\right.}$ | $\frac{1}\lambda$ | $\frac{1}{\lambda^{2}}$ |
+| 连续，指数分布$E(\lambda)$ | $\lambda$ | $f(x)={\left\{\begin{array}{l l}{\lambda e^{-\lambda x},\ \ x\gt 0}\\ {0}，{其他}\end{array}\right.}$ | $\frac{1}\lambda$ | $\frac{1}{\lambda^{2}}$ |
 
 ### 泊松定理
 设$\lambda\gt0$是一个常数，n是任意正整数，设$n p_{n}=\lambda$，则对任一固定的非负整数k,有
@@ -106,6 +106,51 @@ $$P(X=k)=C_{n}^{k}p^{k}(1-p)^{n-k}\approx{\frac{(n p)^{k}e^{-np}}{k!}}$$
 
 ### 随机变量的分布函数
 ![P39](../../images/math/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0.jpg)
+- $X \sim U(a,b)$的分布函数
+$$
+F(x)= 
+\left\{ 
+    \begin{array}{lc}
+        0 & x \lt a \\
+        \frac{x-a}{b-a} & a\leq x\lt b \\
+        1 & x \gt b \\
+    \end{array}
+\right.
+$$
+- $X \sim E(\lambda)$的分布函数
+$$
+F(x)= 
+\left\{ 
+    \begin{array}{lc}
+        1 - e^{-\lambda x} & x \gt 0 \\
+        0 & 其他 \\
+    \end{array}
+\right.
+$$
+> 泊松分布，一段时间内事件发生的数量，平均值为$\lambda$；指数分布，两个事件发生的间隔，平均值为$\frac{1}{\lambda}$，具有无记忆性。
+
+### 正态分布
+- 关于$x=\mu$对称；
+- 在$x=\mu\pm\sigma$处有拐点；
+- 若$X{\sim}N(0,1)$，则称X服从标准正态分布；
+
+### 标准正态分布
+- 关于x=0对称，$f(-x)=f(x)$;
+- 分布函数$\Phi(-x)=1-\Phi(x)$；
+- 可通过$Z={\frac{X-\mu}{\sigma}}\sim N(0,1)$将正态分布转换为标准正态分布；
+
+### 连续型随机变量及其概率密度
+定义：如果对于随机变量X的分布函数F(x)，存在非负可积函数f(x)，使对任实数x有
+$$F(x)=\int_{-\infty}^{x}f(t)\,d t$$
+则称X为连续型随机变量，f(x) 称为X的概率密度函数，简称概率密度。
+- $f(x)\geq0$;
+- $\textstyle\int_{-\infty}^{+\infty}f(x)d x=1$;
+- $P(x_{1}\lt X\leq x_{2})=F(x_{2})-F(x_{1})=\textstyle\int_{x_1}^{x_2}f(x)dx$，$P(x_{1}\lt X\leq x_{2})=P(x_{1}\leq X\leq x_{2})=P(x_{1}\leq X\lt x_{2})=P(x_{1}\lt X\lt x_{2})$;
+- 若$f(x)$在点x处连续，则有$F^{\prime}(x)=f(x)$；
+
+
+
+
 
 
 ## 线性代数
