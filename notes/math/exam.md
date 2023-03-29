@@ -148,8 +148,19 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,d t$$
 - $P(x_{1}\lt X\leq x_{2})=F(x_{2})-F(x_{1})=\textstyle\int_{x_1}^{x_2}f(x)dx$，$P(x_{1}\lt X\leq x_{2})=P(x_{1}\leq X\leq x_{2})=P(x_{1}\leq X\lt x_{2})=P(x_{1}\lt X\lt x_{2})$;
 - 若$f(x)$在点x处连续，则有$F^{\prime}(x)=f(x)$；
 
-
-
+### 二维离散型随机变量
+- 联合分布律
+$$P\{X=x_{i},Y=y_{j}\}=p_{ij},(i,j=1,2,\cdots)$$
+- 联合分布函数
+$$F(x,y)=P\{X\leq x,Y\leq y\}=\sum_{x_{i}\leq x}\sum_{y_{j}\leq y}p_{ij}(i,j=1,2,\cdots)$$
+- 边缘分布律
+$$P_{i}=\sum_{j}p_{ij},(j=1,2,\cdots)$$
+- 边缘分布函数
+$$F_{X}(x)=P\{X\leq x\}$$
+- 条件分布
+$$P(X=i|Y=j)={\frac{P(X=i,Y=j)}{P(Y=j)}}$$
+- 独立性
+$$P_{ij}=P_{i}\times P_{j},(i,j=1,2,\cdots) \Leftrightarrow F(x,y)=F_{x}(x)\cdot F_{Y}(y)$$
 
 
 
