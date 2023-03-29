@@ -35,7 +35,7 @@
 - $\left(\frac{u}{v}\right)^{\prime}=\frac{u ^{\prime} \cdot v-u \cdot v^{\prime}}{v^{2}}(v \neq 0)$
 - $(\mathrm{u} \cdot \mathrm{v} \cdot \mathrm{w})^{\prime}=\mathrm{u}^{\prime} \cdot \mathrm{v} \cdot \mathrm{w}+\mathrm{u} \cdot \mathrm{v}^{\prime} \cdot \mathrm{w}+\mathrm{u} \cdot \mathrm{v} \cdot \mathrm{w}^{\prime}$
 
-- 洛必达法则
+### 洛必达法则
 - $\lim _{x \rightarrow a} \frac{f(x)}{g(x)}=\lim _{x \rightarrow a} \frac{f^{\prime}(x)}{g^{\prime}(x)}=A$
 
 ## 概率论与数理统计
@@ -58,16 +58,16 @@ $A \cap(B \cup C)=(A \cap B) \bigcup(A \cap C)$；
 - 三个事件的概率加法公式:$P(A \cup B \cup C)=P(A)+P(B)+P(C)-P(A B)-P(B C)-P(A C)+P(A B C)$
 
 ### 古典概型
-$
+$$
 P(A)=\frac{A \text { 中基本的事件个数 } x}{\text { 基本事件总数 } n}
-$
+$$
 - 排列公式：$A_n^m=\frac{n !}{(n-m) !}$
 - 组合公式：$C_n^m=\frac{A_n^m}{m !}=\frac{n !}{m !(n-m) !}$
 
 ### 条件概率
-$
+$$
 P(B \mid A)=\frac{P(A B)}{P(A)}, \quad(P(A)>0)
-$
+$$
 - $0 \leq P(B \mid A) \leq 1$;
 - $P(S \mid A)=1$;
 - $P(\bar{A} \mid B)=1-P(A \mid B)$;
@@ -75,19 +75,31 @@ $
 - $\text { 若 } P(A)>0, \quad P(B \mid A)=\frac{P(A B)}{P(A)} \Rightarrow P(A B)=P(B \mid A) P(A) \text {. }$
 
 ### 全概率公式:
-$
+$$
 P(A)=\sum_{i=1}^n P\left(A B_i\right)=\sum_{i=1}^n P\left(A \mid B_i\right) P\left(B_i\right)
-$
+$$
 
 ### 贝叶斯公式
-$
+$$
 P\left(B_{i} \mid A\right)=\frac{P\left(B_{i} A\right)}{P(A)}=\frac{P\left(A \mid B_{i}\right) P\left(B_{i}\right)}{\sum_{j=1}^{n} P\left(A \mid B_{j}\right) P\left(B_{j}\right)}
-$
+$$
 
 ### 事件的独立性
 设  A  和  B  是两事件, 若满足  P(A B)=P(A) P(B) , 则称事件  A  和  B  相互独立。
 
 ### 常用随机变量的数学期望和方差
+
+| 分布 | 参数 | 分布律或概率密度 | 数学期望 | 方差 |
+| :----- | :----- | :----- | :----- | :----- |
+| 0-1分布 | p | $P\{x=k\}=p^{k}(1-p)^{1-k}；(k=0,1)$ | p | $p(1-p)$ |
+| 二项分布$B(n,p)$ | n,p | $P\{x=k\}=C_{n}^{k}p^{k}(1-p)^{1-k}$ | np | $n p(1-p)$ |
+| 泊松分布$P(\lambda)$ | $\lambda$ | $P\{x=k\}={\frac{\lambda^{k}e^{-{\lambda}}}{k!}}$ | $\lambda$ | $\lambda$ |
+| 均匀分布$U(a,b)$ | a<b | $f(x)={\frac{1}{b-a}}；(a\lt x\lt b)$ | $\textstyle{\frac{a+b}{2}}$ | $\frac{(b-a)^{2}}{12}$ |
+| 正态分布$N(\mu,\sigma^{2})$ | $\mu_,\sigma$ | $f(x)={\frac{1}{{\sqrt{2\pi}}\sigma}}e^{-{\frac{(x-\mu)^{2}}{2\sigma^{2}}}}$ | $\mu$ | $\sigma^{2}$ |
+| 指数分布$e(\lambda)$ | $\lambda$ | $f(x)={\left\{\begin{array}{l l}{\lambda e^{-\lambda x},\ \ x\gt 0}\\ {0}，{其他}\end{array}\right.}$ | $\frac{1}\lambda$ | $\frac{1}{\lambda^{2}}$ |
+
+
+
 
 
 
