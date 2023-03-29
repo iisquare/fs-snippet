@@ -58,12 +58,16 @@ $A \cap(B \cup C)=(A \cap B) \bigcup(A \cap C)$；
 - 三个事件的概率加法公式:$P(A \cup B \cup C)=P(A)+P(B)+P(C)-P(A B)-P(B C)-P(A C)+P(A B C)$
 
 ### 古典概型
-$$P(A)=\frac{A \text { 中基本的事件个数 } x}{\text { 基本事件总数 } n}$$
+$
+P(A)=\frac{A \text { 中基本的事件个数 } x}{\text { 基本事件总数 } n}
+$
 - 排列公式：$A_n^m=\frac{n !}{(n-m) !}$
 - 组合公式：$C_n^m=\frac{A_n^m}{m !}=\frac{n !}{m !(n-m) !}$
 
 ### 条件概率
-$$P(B \mid A)=\frac{P(A B)}{P(A)}, \quad(P(A)>0)$$
+$
+P(B \mid A)=\frac{P(A B)}{P(A)}, \quad(P(A)>0)
+$
 - $0 \leq P(B \mid A) \leq 1$;
 - $P(S \mid A)=1$;
 - $P(\bar{A} \mid B)=1-P(A \mid B)$;
@@ -71,14 +75,14 @@ $$P(B \mid A)=\frac{P(A B)}{P(A)}, \quad(P(A)>0)$$
 - $\text { 若 } P(A)>0, \quad P(B \mid A)=\frac{P(A B)}{P(A)} \Rightarrow P(A B)=P(B \mid A) P(A) \text {. }$
 
 ### 全概率公式:
-$$
+$
 P(A)=\sum_{i=1}^n P\left(A B_i\right)=\sum_{i=1}^n P\left(A \mid B_i\right) P\left(B_i\right)
-$$
+$
 
 ### 贝叶斯公式
-$$
+$
 P\left(B_{i} \mid A\right)=\frac{P\left(B_{i} A\right)}{P(A)}=\frac{P\left(A \mid B_{i}\right) P\left(B_{i}\right)}{\sum_{j=1}^{n} P\left(A \mid B_{j}\right) P\left(B_{j}\right)}
-$$
+$
 
 ### 事件的独立性
 设  A  和  B  是两事件, 若满足  P(A B)=P(A) P(B) , 则称事件  A  和  B  相互独立。
