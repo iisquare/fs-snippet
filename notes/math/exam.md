@@ -91,12 +91,12 @@ $$
 
 | 分布 | 参数 | 分布律或概率密度 | 数学期望 | 方差 |
 | :----- | :----- | :----- | :----- | :----- |
-| 0-1分布 | p | $P\{x=k\}=p^{k}(1-p)^{1-k}；(k=0,1)$ | p | $p(1-p)$ |
-| 二项分布$B(n,p)$ | n,p | $P\{x=k\}=C_{n}^{k}p^{k}(1-p)^{1-k}$ | np | $n p(1-p)$ |
-| 泊松分布$P(\lambda)$ | $\lambda$ | $P\{x=k\}={\frac{\lambda^{k}e^{-{\lambda}}}{k!}}$ | $\lambda$ | $\lambda$ |
-| 均匀分布$U(a,b)$ | a<b | $f(x)={\frac{1}{b-a}}；(a\lt x\lt b)$ | $\textstyle{\frac{a+b}{2}}$ | $\frac{(b-a)^{2}}{12}$ |
-| 正态分布$N(\mu,\sigma^{2})$ | $\mu_,\sigma$ | $f(x)={\frac{1}{{\sqrt{2\pi}}\sigma}}e^{-{\frac{(x-\mu)^{2}}{2\sigma^{2}}}}$ | $\mu$ | $\sigma^{2}$ |
-| 指数分布$e(\lambda)$ | $\lambda$ | $f(x)={\left\{\begin{array}{l l}{\lambda e^{-\lambda x},\ \ x\gt 0}\\ {0}，{其他}\end{array}\right.}$ | $\frac{1}\lambda$ | $\frac{1}{\lambda^{2}}$ |
+| 离散，0-1分布 | p | $P\{X=k\}=p^{k}(1-p)^{1-k}；(k=0,1)$ | p | $p(1-p)$ |
+| 离散，二项分布$B(n,p)$ | n,p | $P\{X=k\}=C_{n}^{k}p^{k}(1-p)^{n-k}$ | np | $n p(1-p)$ |
+| 离散，泊松分布$P(\lambda)$ | $\lambda$ | $P\{X=k\}={\frac{\lambda^{k}e^{-{\lambda}}}{k!}}$ | $\lambda$ | $\lambda$ |
+| 连续，均匀分布$U(a,b)$ | a<b | $f(x)={\frac{1}{b-a}}；(a\lt x\lt b)$ | $\textstyle{\frac{a+b}{2}}$ | $\frac{(b-a)^{2}}{12}$ |
+| 连续，正态分布$N(\mu,\sigma^{2})$ | $\mu_,\sigma$ | $f(x)={\frac{1}{{\sqrt{2\pi}}\sigma}}e^{-{\frac{(x-\mu)^{2}}{2\sigma^{2}}}}$ | $\mu$ | $\sigma^{2}$ |
+| 连续，指数分布$e(\lambda)$ | $\lambda$ | $f(x)={\left\{\begin{array}{l l}{\lambda e^{-\lambda x},\ \ x\gt 0}\\ {0}，{其他}\end{array}\right.}$ | $\frac{1}\lambda$ | $\frac{1}{\lambda^{2}}$ |
 
 
 
