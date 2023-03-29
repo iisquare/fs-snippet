@@ -98,10 +98,14 @@ $$
 | 连续，正态分布$N(\mu,\sigma^{2})$ | $\mu_,\sigma$ | $f(x)={\frac{1}{{\sqrt{2\pi}}\sigma}}e^{-{\frac{(x-\mu)^{2}}{2\sigma^{2}}}}$ | $\mu$ | $\sigma^{2}$ |
 | 连续，指数分布$e(\lambda)$ | $\lambda$ | $f(x)={\left\{\begin{array}{l l}{\lambda e^{-\lambda x},\ \ x\gt 0}\\ {0}，{其他}\end{array}\right.}$ | $\frac{1}\lambda$ | $\frac{1}{\lambda^{2}}$ |
 
+### 泊松定理
+设$\lambda\gt0$是一个常数，n是任意正整数，设$n p_{n}=\lambda$，则对任一固定的非负整数k,有
+$$\operatorname*{lim}_{n\rightarrow\infty}C_{n}^{k}p_{n}^{k}(1-p_{n})^{n-k}=\frac{\lambda^{k}e^{-\lambda}}{k!}$$
+如果随机变量$X{\sim}B(n,p)$，当n很大，p很小时，X近似服从参数$\lambda=n p$的泊松分布，即
+$$P(X=k)=C_{n}^{k}p^{k}(1-p)^{n-k}\approx{\frac{(n p)^{k}e^{-np}}{k!}}$$
 
-
-
-
+### 随机变量的分布函数
+![P39](../../images/math/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0.jpg)
 
 
 ## 线性代数
