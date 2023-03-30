@@ -162,6 +162,88 @@ $$P(X=i|Y=j)={\frac{P(X=i,Y=j)}{P(Y=j)}}$$
 - 独立性
 $$P_{ij}=P_{i}\times P_{j},(i,j=1,2,\cdots) \Leftrightarrow F(x,y)=F_{x}(x)\cdot F_{Y}(y)$$
 
+### 二维连续性随机变量
+- 联合分布函数
+$$F(x,y)=P\{X\leq x,Y\leq y\}=\int_{-\infty}^{y}\int_{-\infty}^{x}f(u,v)d u d v$$
+若f(x,y)在点(x,y)处连续，则有${\frac{{\partial}^{2}F(x,y)}{\partial x\partial y}}=f(x,y)$
+- 边缘分布函数
+$$F_{X}(x)=F(x,+\infty)=\int_{-\infty}^{x}\Big[\int_{-\infty}^{+\infty}f(x,y)dy\Big]dx$$
+- 边缘概率密度
+$$f_{x}(x)=[F_{X}(x)]^{\prime}=\int_{-\infty}^{+\infty}f(x,y)dy$$
+- 条件分布
+$$f_{X,Y}(X=x|Y=y)={\frac{f(x,y)}{f_{Y}(y)}}；f_{Y}(y)\gt 0$$
+- 独立性
+$$f(x,y)=f_{X}(x)\cdot f_{Y}(y)$$
+
+### 二维连续型随机变量函数的分布
+$$F_{Z}(z)=P\{Z\leq z\}=\mathop{\int\int}\limits_{g(x,y)\leq z}f(x,y)dxdy$$
+> 根据函数增减性判断变量x,y的区间
+
+### 期望
+- 离散型随机变量的数学期望
+$$E(x)=\sum_{i=1}^{\infty}x_{i}p_{i}$$
+- 连续型随机变量的数学期望
+$$E(X)=\int_{-\infty}^{+\infty}xf(x)dx$$
+- 一维离散型随机变量函数的数学期望
+$$E(Y)=\sum_{i=1}^{\infty}g(x_{i})p_{i}$$
+- 一维连续型随机变量函数的数学期望
+$$E(Y)=\int_{-\infty}^{+\infty}g(x)f_{X}(x)dx$$
+- 二维离散型随机变量函数的数学期望
+$$E(Z)=E[g(X,Y)]=\sum_{i=1}^{\infty}\sum_{j=1}^{\infty}g(x_{i},y_{j})p_{i j}$$
+- 二维连续型随机变量函数的数学期望
+$$E(Z)=E[g(X,Y)]=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}g(x,y)f(x,y)d xdy$$
+
+### 随机变量数学期望的性质
+- 设C为常数，则有E(C)=C;
+- 设X为一随机变量，且E(X)存在，C为常数，则有E(CX)= CE(X);
+- 设X与Y是两个随机变量，则有E(X +Y)= E(X)+ E(Y);
+- 设X与Y是两个随机变量，则有E(aX土bY)= aE(X)土bE(Y);
+- 设X与Y相互独立，则有E(XY)= E(X)E(Y), (反之不成立)；
+
+### 方差
+- 计算公式
+$$D(X)=E\{[X-E(X)]^2\}=E(X^2)-[E(X)]^2$$
+- 标准差或均方差
+$$\sqrt{D(X)}$$
+
+### 方差的性质
+- 设C为常数，则$D(C)=0$；
+- 如果X为随机变量，C为常数，则$D(CX)=C^2D(X)$；
+- 如果X为随机变量，C为常数，则有$D(X +C)= D(X)$；
+- 若X,Y 相互独立，则$D(X{\pm}Y)= DX + DY$；
+- 更一般地: $D(aX +bY)=a^2 D(X)+ b^2D(Y)$；
+
+### 协方差
+- 计算公式
+$$Cov(X,Y)=E[(X-E X)(Y-E Y)]=E(X Y)-E(X)E(Y)$$
+
+### 协方差的性质:
+- $Cov(X,Y)= Cov(Y,X)$;
+- $Cov(X,Y + Z) = Cov(X,Y)+ Cov(X,Z)$;
+- $Cov(aX ,bY)= abCov(X,Y)$,其中a,b为任意常数;
+- $Cov(C,X)=0$, 其中C为任意常数;
+- $Cov(aX_{1}{\pm}bX_{2},Y)= aCov(X_{1},Y){\pm}bCov(X_{2},Y)$;
+- 如果X与Y相互独立，则$Cov(X,Y)=0$;
+- $D(X +Y)= D(X)+ D(Y)+ 2Cov(X,Y)$;
+
+### 相关系数
+设(X,Y)是二维随机变量，且X和Y的方差均存在，且都不为零，则称
+$$\rho_{XY}={\frac{{Cov}(X,Y)}{\sqrt{DX}\sqrt{DY}}}$$
+目的是为了消除量纲（单位）因素的影响，参照
+$$X \sim N(\mu,\sigma^{2})；{\frac{X-\mu}{\sigma}}={\frac{X-E(X)}{\sqrt{D(X)}}}$$
+$$X^*={\frac{X-E(X)}{\sqrt{D(X)}}}，Y^*={\frac{Y-E(Y)}{\sqrt{D(Y)}}}$$
+$$Cov(X^*,Y^*)=Cov({\frac{X-EX}{\sqrt{DX}}},{\frac{Y-EY}{\sqrt{DY}}})={\frac{{Cov}(X,Y)}{\sqrt{DX}\sqrt{DY}}}$$
+
+### 相关系数的性质
+- $|\rho_{XY}|\leq1$.当$\rho_{XY}=0$时，称X与Y不相关.
+- 随机变量X与Y不相关的等价说法:当DX≠0,DY≠0时，
+$$\rho_{XY}=0\Leftrightarrow Cov(X,Y)=0$$
+- 若随机变量X,Y相互独立则X与Y不相关，但反之不一定.
+
+
+
+
+
 
 
 ## 线性代数
