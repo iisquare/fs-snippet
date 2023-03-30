@@ -237,7 +237,7 @@ $$Cov(X^*,Y^*)=Cov({\frac{X-EX}{\sqrt{DX}}},{\frac{Y-EY}{\sqrt{DY}}})={\frac{{Co
 ### 相关系数的性质
 - $|\rho_{XY}|\leq1$.当$\rho_{XY}=0$时，称X与Y不相关.
 - 随机变量X与Y不相关的等价说法:当DX≠0,DY≠0时，
-$$\rho_{XY}=0\Leftrightarrow Cov(X,Y)=0$$
+$$\rho_{XY}=0\Leftrightarrow Cov(X,Y)=0\Leftrightarrow E(X Y)=E(X)E(Y)\Leftrightarrow D(X\pm Y)=D X+D Y$$
 - 若随机变量X,Y相互独立则X与Y不相关，但反之不一定.
 
 
