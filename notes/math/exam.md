@@ -240,7 +240,9 @@ $$Cov(X^*,Y^*)=Cov({\frac{X-EX}{\sqrt{DX}}},{\frac{Y-EY}{\sqrt{DY}}})={\frac{{Co
 $$\rho_{XY}=0\Leftrightarrow Cov(X,Y)=0\Leftrightarrow E(X Y)=E(X)E(Y)\Leftrightarrow D(X\pm Y)=D X+D Y$$
 - 若随机变量X,Y相互独立则X与Y不相关，但反之不一定（不线性相关不表示相互独立）.
 
-
+### 大数定律及中心极限定理
+- 切比雪夫不等式
+$$P\{|X-E(X)|\leq{\varepsilon}\}\leq{\frac{D(X)}{\varepsilon^{2}}}；{\varepsilon} \gt 0；P\{\mid X-E(X)\}\lt \varepsilon\}\geq1-{\frac{D(X)}{\varepsilon^{2}}}$$
 
 
 
