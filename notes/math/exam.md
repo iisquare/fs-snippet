@@ -243,8 +243,20 @@ $$\rho_{XY}=0\Leftrightarrow Cov(X,Y)=0\Leftrightarrow E(X Y)=E(X)E(Y)\Leftright
 ### 大数定律及中心极限定理
 - 切比雪夫不等式
 $$P\{|X-E(X)|\leq{\varepsilon}\}\leq{\frac{D(X)}{\varepsilon^{2}}}；{\varepsilon} \gt 0；P\{\mid X-E(X)\}\lt \varepsilon\}\geq1-{\frac{D(X)}{\varepsilon^{2}}}$$
+- 依概率收敛定义：设$X_{i},X_{2},\cdots X_{n},\cdots$是一个随机变量序列，$a$是一个常数，如果对于任意给定的正数$\varepsilon$，有$$\operatorname*{lim}_{n\to\infty}P\{{\vert}X_{n}-a\vert\lt\varepsilon\}=1$$则称随机变量序列$X_{i},X_{2},\cdots X_{n},\cdots$依概率收敛于$a$，记为$X_{n}{\xrightarrow{P}}a$。
 
+| 名词 | 大数定律 | 注释 |
+| :----- | :----- | :----- |
+| 切比雪夫大数定律 | 设随机变量序列$X_{1},X_{2},\cdots$两两不相关，且方差均存在，又存在常数$D(X_{i})\leq C(i=1,2,\cdots)$, 则对任意$\varepsilon\gt0$,有$$\operatorname*{lim}_{n\to\infty}P\Big\{\Big\vert{\frac{1}{n}\sum_{i=1}^{\infty}X_i-\frac{1}{n}\sum_{i=1}^{\infty}E(X_i)}\Big\vert\lt\varepsilon\Big\}=1$$ | 在定理条件下，有$$\frac{1}{n}\sum_{i=1}^{\infty}X_i-\frac{1}{n}\sum_{i=1}^{\infty}E(X_i){\xrightarrow{P}}0$$ |
+| 辛钦大数定律 | 设随机变量序列$X_{1},X_{2},\cdots$独立同分布，且数学期望存在，即$E(X)=\mu(i=1,2,\cdots)$，则对任意$\varepsilon\gt0$，有$$\operatorname*{lim}_{n\to\infty}P\Big\{\Big\vert{\frac{1}{n}\sum_{i=1}^{\infty}X_i-\mu}\Big\vert\lt\varepsilon\Big\}=1$$ | 在定理条件下，有$$\frac{1}{n}\sum_{i=1}^{\infty}X_i{\xrightarrow{P}}\mu$$ |
+| 伯努利大数定律 | 设$\mu_n$是n次独立试验中事件A发生的次数，而p是事件A在每次试验中发生的概率，则对任意$\varepsilon\gt0$,有$$\operatorname*{lim}_{n\to\infty}P\Big\{\Big\vert{\frac{\mu_n}{n}-p}\Big\vert\lt\varepsilon\Big\}=1$$ | 事件A发生的频率依概率收敛于事件A的概率，即$$\frac{\mu_n}{n}\xrightarrow{P}p$$|
 
+- 林德伯格-莱维(独立同分布) 中心极限定理
+
+设随机变量$X_{1},X_{2},\cdots,X_{n},\cdots$相互独立同分布，且期望和方差均存在，即$E(X_{k})=\mu,D(X_{k})=\sigma^{2}\gt 0,(k=1,2,3,\cdots)$,则随机变量之和$\sum_{k=1}^nX_k$;的标准化变量
+$$Y_{n}=\frac{\sum_{k=1}^{n}X_{k}-E\left(\sum_{k=1}^{n}X_{k}\right)}{\sqrt{D\left(\sum_{k=1}^{n}X_k\right)}}=\frac{\sum_{k=1}^{n}X_{k}-n\mu}{\sqrt{n}\sigma}$$
+的分布函数$F_n(x)$对于任意$x$满足（标准正态分布）:
+$$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\{\frac{\sum_{k=1}^{n}X_{k}-n\mu}{\sqrt{n}\sigma}{\le}x\right\}=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}^{e^{-\frac{t^2}{2}}}dt=\Phi(x)$$
 
 
 
