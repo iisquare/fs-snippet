@@ -255,8 +255,19 @@ $$P\{|X-E(X)|\leq{\varepsilon}\}\leq{\frac{D(X)}{\varepsilon^{2}}}；{\varepsilo
 
 设随机变量$X_{1},X_{2},\cdots,X_{n},\cdots$相互独立同分布，且期望和方差均存在，即$E(X_{k})=\mu,D(X_{k})=\sigma^{2}\gt 0,(k=1,2,3,\cdots)$,则随机变量之和$\sum_{k=1}^nX_k$;的标准化变量
 $$Y_{n}=\frac{\sum_{k=1}^{n}X_{k}-E\left(\sum_{k=1}^{n}X_{k}\right)}{\sqrt{D\left(\sum_{k=1}^{n}X_k\right)}}=\frac{\sum_{k=1}^{n}X_{k}-n\mu}{\sqrt{n}\sigma}$$
-的分布函数$F_n(x)$对于任意$x$满足（标准正态分布）:
+的分布函数$F_n(x)$对于任意$x$满足（近似标准正态分布）:
 $$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\{\frac{\sum_{k=1}^{n}X_{k}-n\mu}{\sqrt{n}\sigma}{\le}x\right\}=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}^{e^{-\frac{t^2}{2}}}dt=\Phi(x)$$
+
+- 棣莫弗-拉普拉斯中心极限定理
+
+设随机变量$X_{1},X_{2},\cdots,X_{n},\cdots$独立同分布，且服从0-1分布，即$P(X_{k}=1)=p,P(X_{k}=0)=1-p,(0\lt p\lt 1,k=1,2,3,\cdots)$，则对于任意x满足（参考0-1分布的期望和方差）:
+$$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\{\frac{\sum_{k=1}^{n}X_{k}-np}{\sqrt{np(1-p)}}{\le}x\right\}=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}^{e^{-\frac{t^2}{2}}}dt=\Phi(x)$$
+
+
+
+
+
+
 
 
 
