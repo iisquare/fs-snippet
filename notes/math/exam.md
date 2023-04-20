@@ -264,6 +264,10 @@ $$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\
 $$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\{\frac{\sum_{k=1}^{n}X_{k}-np}{\sqrt{np(1-p)}}{\le}x\right\}=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}^{e^{-\frac{t^2}{2}}}dt=\Phi(x)$$
 
 
+### 数理统计
+- 归纳法(induction)：从大量经验事实中总结出最接近本质的原理。
+- 演绎法(deduction)：从一条公理出发进行推演分析。
+
 
 
 
