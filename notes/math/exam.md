@@ -267,7 +267,19 @@ $$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\
 ### 数理统计
 - 归纳法(induction)：从大量经验事实中总结出最接近本质的原理。
 - 演绎法(deduction)：从一条公理出发进行推演分析。
+- 统计量：样本的函数，不含未知参数。设$X_{1},X_{2},\cdots,X_{n}$是来自总体X的一个样本，$g(X_{1},X_{2},\cdots,X_{n})$是$X_{1},X_{2},\cdots,X_{n}$的函数，若g中不含有未知的参数，则称$g(X_{1},X_{2},\cdots,X_{n})$是一个统计量。
+- 常用的统计量:
 
+| 名称 | 定义 |
+|:---|:---|
+| 样本均值 | $${\overline{{X}}}={\frac{1}{n}}({X}_{1}+{X}_{2}+\cdots+{X}_{n})={\frac{1}{n}}\sum_{i=1}^{n}X_{i}$$ |
+| 样本方差 | $$S^{2}={\frac{1}{n-1}}\sum_{i=1}^{n}(X_{i}-{\bar{X}})^{2}={\frac{1}{n-1}}({\sum_{i=1}^{n}}X_{i}^{2}-n{\bar{X}}^{2})$$ |
+| 样本标准差 | $$S=\sqrt{{\frac{1}{n-1}}\sum_{i=1}^{n}(X_{i}-{\bar{X}})^{2}}$$ |
+| 样本k阶原点矩 | $$A_{k}={\frac{1}{n}}{\sum_{i=1}^{n}}X_{i}^{k},(k=1,2,\cdots)$$ |
+| 样本k阶中心距 | $$B_{k}={\frac{1}{n}}{\sum_{i=1}^{n}}(X_{i}-{\bar{X}})^{k},(k=2,3,\cdots)$$ |
+
+
+$$E(X_i)=\mu，D(X_i)=\sigma^2；E(\bar{X})=\mu，D(\bar{X})=\frac{\sigma^2}{n}，E(S^2)=\sigma^2$$
 
 
 
