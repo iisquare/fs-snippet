@@ -7,3 +7,8 @@
 ```
 sudo dpkg-reconfigure dash
 ```
+- ssh
+```
+sudo apt install ssh
+systemctl start sshd
+```
