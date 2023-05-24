@@ -47,6 +47,10 @@ sudo chmod -x /usr/local/cuda-12.1/include/cudnn*
 sudo cp -R cudnn-linux-x86_64-8.9.1.23_cuda12-archive/include/* /usr/local
 /cuda-12.1/include/
 ```
+- 卸载
+```
+sudo /usr/local/cuda-12.1/bin/cuda-uninstaller
+```
 
 ## 参考链接
 - [TensorFlow Keras Version](https://docs.floydhub.com/guides/environments/)
