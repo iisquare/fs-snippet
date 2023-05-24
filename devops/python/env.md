@@ -1,6 +1,16 @@
 # Python
 
 ## Anaconda
+- 安装建议
+```
+可将~/.bashrc文件中conda生成的环境变量，
+迁移到任意文件中（如~/env/conda），
+通过source方式加载，避免影响默认环境。
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# ******
+# <<< conda initialize <<<
+```
 - 从文件创建环境
 ```
 conda env create -f environment.yml
@@ -78,3 +88,7 @@ report_errors: false
 timeout = 6000
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
+## 参考链接
+
+- [Anaconda Download](https://www.anaconda.com/download/)
