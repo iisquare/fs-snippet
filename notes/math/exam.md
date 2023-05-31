@@ -105,7 +105,7 @@ $$\operatorname*{lim}_{n\rightarrow\infty}C_{n}^{k}p_{n}^{k}(1-p_{n})^{n-k}=\fra
 $$P(X=k)=C_{n}^{k}p^{k}(1-p)^{n-k}\approx{\frac{(n p)^{k}e^{-np}}{k!}}$$
 
 ### 随机变量的分布函数
-![P39](../../images/math/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0.jpg)
+![随机变量的分布函数-P39](../../images/math/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0.jpg)
 - $X \sim U(a,b)$的分布函数
 $$
 F(x)= 
@@ -282,8 +282,49 @@ $$\operatorname*{lim}_{n\to\infty}F_n(x)=\operatorname*{lim}_{n\to\infty}P\left\
 $$E(X_i)=\mu，D(X_i)=\sigma^2；E(\bar{X})=\mu，D(\bar{X})=\frac{\sigma^2}{n}，E(S^2)=\sigma^2$$
 
 
+### 三大抽样分布
+#### $\chi^{2}$分布
+
+定义：设$X_{1},X_{2},\cdots,X_{s}$相互独立且均来自总体$X\sim N(0,1)$，则称统计量
+$$\chi^{2}=X_{1}^{2}+X_{2}^{2}+\cdots+X_{n}^{2}$$
+服从自由度为$n$的$\chi^{2}$分布，记为$\chi^{2}\sim \chi^{2}(n)$。概率密度函数图像为:
+
+![X^2分布的概率密度函数](../../images/math/X%5E2%E5%88%86%E5%B8%83%E7%9A%84%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0.png)
+
+性质：
+
+- $E[\chi^2(n)]=n，D[\chi^2(n)]=2n$；
+- 设$X\sim \chi^2(m)，Y\sim \chi^2(n)，$且X，Y相互独立，则$X+Y\sim \chi^2(m+n)$；
+- 上$a$分位点：对于任意给定的正数$a(0\lt a\lt 1)$，称满足条件$P\{\chi^2\gt \chi^2(n)\}=a$的点$\chi_a^2(n)$为$\chi^{2}$分布的上$a$分位点；
+
+#### $t$分布（Student分布）
+
+定义：设$X\sim N(0,1),Y\sim \chi^2(n)$，且X,Y相互独立，则称统计量
+$$T=\frac{X}{\sqrt{Y/n}}$$
+服从自由度为n的t分布，记为$t\sim t(n)$. 概率密度函数图像为:
+
+![t分布的概率密度函数](../../images/math/t%E5%88%86%E5%B8%83%E7%9A%84%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0.png)
 
 
+性质：
+
+- 当$n\gt 45$时，$T=\frac{X}{\sqrt{Y/n}}\overset{近似}{\sim}N(0,1)$；
+- 上a分位点：对于任意给定的正数$a(0\lt a\lt 1)$，称满足条件$P\{T \gt t_{a}(n)\}=a$的点$t_{a}(n)$为t分布的上a分位点，特别地，$t_{1-a}(n)=-t_{a}(n)$；
+
+#### F分布
+
+定义：设$U\sim \chi^2(n_1),V\sim \chi^2(n_2)$， 且U,V相互独立，则称统计量
+$$F=\frac{U/n_1}{V/n_2}$$
+服从自由度为$(n_1,n_2)$的F分布，记为$F\sim F(n_1,n_2)$.概率密度函数图像为:
+
+
+![F分布的概率密度函数](../../images/math/F%E5%88%86%E5%B8%83%E7%9A%84%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0.png)
+
+
+性质：
+
+- 若$F\sim F(n_1,n_2)$，则$\frac{1}{F}\sim F(n_2,n_1)$；
+- 上a分位点：对于任意给定的正数$a(0\lt a\lt 1)$，称满足条件$P\{F\gt F_{a}(n_1,n_2)\}=a$的点$F_{a}(n_1,n_2)$为F分布的上a分位点.特别地，$F_{1-a}(n_1,n_2)=\frac{1}{F_{a}(n_2,n_1)}$；
 
 
 
