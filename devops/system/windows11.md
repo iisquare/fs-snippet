@@ -43,6 +43,7 @@ Add-AppxPackage
 adb connect <TEST DEVICE IP ADDRESS>
 adb install app-debug .apk
 ```
+- [Android SDK Platform-Tools](https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn)
 
 ## 参考
 - [如何在 Windows 10 中安装 WSL2 的 Linux 子系统](https://blog.walterlv.com/post/how-to-install-wsl2.html)
