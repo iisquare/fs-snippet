@@ -56,18 +56,34 @@ doge   ALL=(root)     NOPASSWD:ALL
 
 ## 分析调试
 
-### tcpdump抓包，配合wireshark进行分析
-
-- [Linux tcpdump命令详解](http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html)
-
-### 命名空间
+### 常用工具
+- 查看进程
 ```
-docker inspect -f {{.State.Pid}} nginx # 查看容器PID
-nsenter -n -t5645 # 进入网络命名空间
+top
+ps aux
+ps -ef # 查看父进程PPID
+pstree -p # 查看进程树
 ```
-- [nsenter命令简介](https://staight.github.io/2019/09/23/nsenter%E5%91%BD%E4%BB%A4%E7%AE%80%E4%BB%8B/)
-
-### 按进程实时统计网络带宽利用率
+- 查看端口
+```
+netstat -anltp
+```
+- 查看资源占用
+```
+lsof -p <进程PID>
+lsof -i <:端口号>
+```
+- 查看硬盘
+```
+df -h
+du -h -d 1
+iotop -P
+```
+- 查看内存
+```
+free -h
+```
+- 按进程实时统计网络带宽利用率
 ```
 命令用法：
 1、设置5秒钟刷新一次，通过-d来指定刷新频率：nethogs -d 5
@@ -80,3 +96,15 @@ r : 按流量排序
 s : 按发送流量排序
 q : 退出命令提示符
 ```
+
+### tcpdump抓包，配合wireshark进行分析
+
+- [Linux tcpdump命令详解](http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html)
+
+### 命名空间
+```
+docker inspect -f {{.State.Pid}} nginx # 查看容器PID
+nsenter -n -t5645 # 进入网络命名空间
+```
+- [nsenter命令简介](https://staight.github.io/2019/09/23/nsenter%E5%91%BD%E4%BB%A4%E7%AE%80%E4%BB%8B/)
+
