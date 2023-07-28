@@ -97,6 +97,8 @@ server {
 - 传递请求头给代理端
 ```
 proxy_set_header Host $http_host;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 ```
 - 增加响应头给客户端
 ```
