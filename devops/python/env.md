@@ -61,15 +61,13 @@ conda install --yes --file requirements.txt
 ## Config
 - ~/.condarc & conda clean -i
 ```
+# @see(https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
 channels:
   - defaults
 show_channel_urls: true
-channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda
 default_channels:
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
 custom_channels:
   conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
@@ -77,7 +75,9 @@ custom_channels:
   bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  deepmodeling: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
 ssl_verify: true
 remote_read_timeout_secs: 100.0
 report_errors: false
