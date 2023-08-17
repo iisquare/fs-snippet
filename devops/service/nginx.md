@@ -30,6 +30,11 @@ server {
     listen 80 default_server;
     server_name _;
     return 502;
+
+    location ~ /\.ht { # 特定文件
+        deny all;
+    }
+}
 ```
 - 访问认证
 ```
@@ -114,6 +119,17 @@ proxy_redirect http://a.com http://b.com;
 
 sub_filter_once off; # 默认on仅替换一次
 sub_filter 'html_a' 'html_b'; # 可选subs_filter模块才支持正则
+```
+- 重定向到HTTPS域名
+```
+server {
+    server_name xxxxxx;
+    rewrite ^(.*)$ https://${server_name}$1 permanent;
+}
+server {
+    server_name xxxxxx;
+    listen 443 ssl;
+}
 ```
 
 ## 参考链接
