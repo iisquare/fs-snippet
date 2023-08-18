@@ -36,8 +36,12 @@ conda activate xxx
 ```
 - 安装及卸载组件
 ```
-conda install jupyter
+conda install jupyter=xxx
+conda update jupyter
 conda uninstall jupyter
+pip install jupyter==xxx
+pip install --upgrade jupyter
+pip uninstall jupyter
 ```
 - 退出及删除环境
 ```
