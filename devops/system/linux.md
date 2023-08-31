@@ -63,6 +63,7 @@ top
 ps aux
 ps -ef # 查看父进程PPID
 pstree -p # 查看进程树
+ps --forest # 按树状结构查看进程
 ```
 - 查看端口
 ```
