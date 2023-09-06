@@ -20,9 +20,9 @@ channels:
   - pytorch
 dependencies:
   - python=3.6
-  - conda-package
+  - pip
   - pip:
-    - pip-package
+    - pip-package==x.x.x
 
 ```
 - 单独创建环境
