@@ -7,3 +7,7 @@
 ```
 rd /s /q "path"
 ```
+- 目录链接
+```
+mklink /D "C:\link" "D:\file"
+```

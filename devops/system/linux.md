@@ -31,6 +31,12 @@ chattr -i /etc/passwd # 解除文件不可改变状态
 ```
 - [Linux chattr 命令详解](https://cloud.tencent.com/developer/article/1598636)
 
+### 文件管理
+- 文件链接
+```
+ln -s /path/to/file /path/to/link
+```
+
 ## 基础信息
 
 ### 发行版本
