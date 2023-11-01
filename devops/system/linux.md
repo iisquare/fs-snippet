@@ -60,6 +60,12 @@ vim /etc/sudoers
 doge   ALL=(root)     NOPASSWD:ALL
 ```
 
+### ssh免密登录
+```
+ssh-keygen -t rsa -b 2048 -N '' -f ~/.ssh/id_rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub <user>@<ip-host>
+```
+
 ## 分析调试
 
 ### 常用工具

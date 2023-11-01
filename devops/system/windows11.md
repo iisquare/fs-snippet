@@ -49,3 +49,4 @@ adb install app-debug .apk
 - [如何在 Windows 10 中安装 WSL2 的 Linux 子系统](https://blog.walterlv.com/post/how-to-install-wsl2.html)
 - [Win10 WSL2 安装Docker](https://www.jianshu.com/p/a20c2d58eaac)
 - [迁移wsl2子系统文件目录](https://juejin.cn/post/7024498662935904269)
+- [如何管理 WSL 磁盘空间](https://learn.microsoft.com/zh-cn/windows/wsl/disk-space)
