@@ -109,6 +109,18 @@ r : 按流量排序
 s : 按发送流量排序
 q : 退出命令提示符
 ```
+- 释放内存buff/cache
+```
+# 执行释放缓存先使用sync同步，防止引起数据错误
+sync
+# 0：不释放（系统默认值） 
+# 1：释放页缓存 
+# 2：释放dentries和inodes 
+# 3：释放所有缓存
+echo 3 > /proc/sys/vm/drop_caches
+# 合并执行
+sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+```
 
 ### tcpdump抓包，配合wireshark进行分析
 
