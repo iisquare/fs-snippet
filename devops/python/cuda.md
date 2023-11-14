@@ -2,7 +2,9 @@
 - [GPU算力](https://developer.nvidia.com/cuda-gpus)
 - [显卡驱动](https://www.geforce.com/drivers)
 - [cuda-toolkit](https://developer.nvidia.com/cuda-toolkit)
+- [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)
 - [NVIDIA cuDNN](https://developer.nvidia.cn/zh-cn/cudnn)
+- [NVIDIA cuDNN Archive](https://developer.nvidia.com/rdp/cudnn-archive)
 - [CUDA Toolkit and Compatible Driver Versions](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ## Nvidia VGA

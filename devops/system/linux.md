@@ -34,7 +34,7 @@ chattr -i /etc/passwd # 解除文件不可改变状态
 ### 文件管理
 - 文件链接
 ```
-ln -s /path/to/file /path/to/link
+ln -s /path/to/link/target /path/to/file
 ```
 
 ## 基础信息
