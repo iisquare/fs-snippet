@@ -43,8 +43,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-12.1/lib64
 - 根据CUDA版本，下载对应cuDNN深度神经网络库，推荐压缩包文件。
 ```
 将cuDNN压缩包中的文件，拷贝到CUDA对应版本的目录下。
-sudo cp -R cudnn-linux-x86_64-8.9.1.23_cuda12-archive/lib/* /usr/local/cuda-12.1/lib64/
-sudo cp -R cudnn-linux-x86_64-8.9.1.23_cuda12-archive/include/* /usr/local/cuda-12.1/include/
+cd cudnn-linux-x86_64-8.9.1.23_cuda12-archive/
+sudo cp -R lib/* /usr/local/cuda-12.1/lib64/
+sudo cp -R include/* /usr/local/cuda-12.1/include/
 sudo chmod -x /usr/local/cuda-12.1/include/cudnn*
 ```
 - 卸载

@@ -67,6 +67,14 @@ python -m pip install -e [local clone]
 conda list -e > requirements.txt
 conda install --yes --file requirements.txt
 ```
+- 环境要求
+```
+# https://peps.python.org/pep-0508/
+xxx==0.0.1; platform_system != "Darwin" and platform_machine != "x86_64" and python_version == "3.11"
+platform_system: Darwin, Windows, Linux
+platform_machine: x86_64, i386, AMD64
+python_version: 3.8, 3.9, 3.11
+```
 
 ## Config
 - ~/.condarc & conda clean -i
